@@ -1,5 +1,10 @@
 function main() {
     activarEventsListener()
+    recogerDatos()
+}
+
+recogerDatos = () => {
+    jugadores = localStorage.getItem("jugadores").split(",")
 }
 
 function activarEventsListener() {
@@ -69,7 +74,7 @@ cambiarCaracter = (frase,tiempo) => {
                 break;
         }
     }else{
-        let rand = random(jugadores.length);
+        frase = frase.replace("|",jugadores[random(jugadores.length)])
     }
 
 
@@ -128,5 +133,6 @@ cambiarCaracter = (frase,tiempo) => {
         "| tiene que meterte un hielo en la camiseta"
     );
 
+    var jugadores = new Array()
 
     window.addEventListener("load", main, false);
