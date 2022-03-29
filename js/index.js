@@ -19,7 +19,7 @@ cantidadJugadores = () => {
             let cant = parseInt(value.value)
             if (cant != "" && cant != null && cant > 0 && cant <= 20) {
                 cantJugadores = cant
-                console.log(cantJugadores)
+                
                 introducirJugadores(1)
             } else {
                 Swal.fire({
@@ -49,12 +49,7 @@ introducirJugadores = (x) => {
                     ++x
                     introducirJugadores(x)
                 } else {
-                    console.log(jugadores)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Jugadores cargados',
-                        text: 'Jugadores: ' + jugadores.toString(),
-                    })
+                    
                     iniciarJuego()
                 }
             } else {
