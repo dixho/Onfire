@@ -31,6 +31,9 @@ header{
     backdrop-filter: blur(15px);
 }
 
+#cabezatx{
+    cursor: pointer;
+}
 
 #caja {
     margin: auto;
