@@ -1,0 +1,161 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Roboto', sans-serif;
+}
+
+html,body {
+    height: 100%;
+    width: 100vw;
+    margin: 0%;
+    background-image: url("../images/5495619.jpg");
+    background-size: cover
+}
+
+/* Cabecera */
+
+header{
+    margin: auto;
+    margin-top: 0;
+}
+
+#cabeza {
+    display: flex;
+    background-color: #1fbdaf;
+    width: 100%;
+    height: 10%;
+    color: white;
+    text-align: center;
+    border-bottom-left-radius: 2em;    
+    border-bottom-right-radius: 2em;
+    backdrop-filter: blur(15px);
+}
+
+
+#caja {
+    margin: auto;
+    width: 40%;
+    backdrop-filter: blur(10px);
+    border-radius: 1em;
+}
+/* Jugador */
+
+#jugador{
+    margin-top: 5%;
+    display: flex;
+}
+
+#jugadorText{
+    margin: auto;
+}
+
+/* Preguntas */
+
+#preguntas{
+    
+    background-color: #c7d0d8;
+    display: flex;    
+    padding: 20%;
+    padding-top: 10%;
+    width: 90%;
+    margin-top: 10em;
+    text-align: center;
+    border-radius: 5em;
+    border: 0.4em solid #a2aeb9;
+}
+
+#TextTipo{
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    
+}
+
+
+
+#pregunta{
+    margin-top: 4em;
+}
+
+#tablero{
+    
+    margin: auto;
+}
+
+#tablero p{
+    margin-top: 10%;
+}
+
+/* Botones */
+
+#divBotones{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+#botones{
+    
+    margin: auto;
+    display: flex;
+}
+
+#botones button{
+
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+/* pie */
+
+#pie {
+    
+    margin-top: 2em;
+    width: 100%;
+    height: 15%;
+    background-color: #7E40C2;
+    border-top-left-radius: 15px;    
+    border-top-right-radius: 15px;
+    display: flex;
+}
+
+#Dx {
+    margin: 12%;
+    float: left;
+}
+
+#Js {
+    margin: 12%;
+    float: right;
+}
+
+a{
+    text-decoration: none;
+    color: beige;
+    background-color: gray;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    width: 20%;
+    height: 25%;
+    margin: 2%;
+    text-align: center;
+}
+
+.neon {
+    font-size: 50px;
+    letter-spacing:-2px;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
+    -webkit-text-fill-color: #a791c7;
+    -webkit-text-stroke-color:#d05bff;
+    -webkit-text-stroke-width:0.2px;
+    -moz-text-fill-color: #F4ECFF;
+    -moz-text-stroke-color:#b102f7;
+    -moz-text-stroke-width:0.2px;
+    }
