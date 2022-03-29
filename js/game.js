@@ -30,17 +30,21 @@ reto = () => {
     }
 
     let rando = random(frasesReto.length)
-    console.log(rando)
+    while(rando == last){
+        rando = random(frasesReto.length)
+    }
+
+    last = rando
     if (rando > 5) {
         
         if (frasesReto[rando].includes("~")) {
             
            fraseFinal = cambiarCaracter(frasesReto[rando],true)
         } else if (frasesReto[rando].includes("|")) {
-            console.log("include |");
+            
             fraseFinal = cambiarCaracter(frasesReto[rando],false)
         } else {
-            console.log("no include");
+            
             console.error("Error en la frase: Frase con ~ o | fuera del marcador");
         }
 
@@ -55,7 +59,7 @@ reto = () => {
 cambiarCaracter = (frase,tiempo) => {
     if(tiempo == true){
         let rand = random(4)
-        console.log("tiempo :"+rand);
+        
         switch(rand){
             case 0:
                 frase = frase.replace("~","1")
@@ -82,10 +86,6 @@ cambiarCaracter = (frase,tiempo) => {
 }
 
     function x(variable) {
-        console.log(variable)
-
-        console.log(rand)
-
         if (variable == verdad) {
 
         } else {
@@ -134,5 +134,7 @@ cambiarCaracter = (frase,tiempo) => {
     );
 
     var jugadores = new Array()
+
+    var last;
 
     window.addEventListener("load", main, false);
