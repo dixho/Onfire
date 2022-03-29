@@ -53,12 +53,15 @@ header{
 
 #preguntas{
     
+    
     background-color: #c7d0d8;
     display: flex;    
     padding: 20%;
-    padding-top: 10%;
+    padding-top: 0%;
     width: 90%;
-    margin-top: 10em;
+    margin-top: 1em;
+    padding-bottom: 0;
+    height: 20em;
     text-align: center;
     border-radius: 5em;
     border: 0.4em solid #a2aeb9;
@@ -72,20 +75,15 @@ header{
     
 }
 
-
-
-#pregunta{
-    margin-top: 4em;
+#tipo{
+    margin-top: 5em;
 }
 
 #tablero{
-    
     margin: auto;
 }
 
-#tablero p{
-    margin-top: 10%;
-}
+
 
 /* Botones */
 
