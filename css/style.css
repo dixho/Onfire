@@ -40,6 +40,7 @@ header{
     width: 40%;
     backdrop-filter: blur(10px);
     border-radius: 1em;
+    text-align: center;
 }
 /* Jugador */
 
@@ -74,12 +75,12 @@ header{
     margin: auto;
     width: 100%;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     
 }
 
 #tipo{
-    margin-top: 5em;
+    margin-top: 2em;
 }
 
 #tablero{

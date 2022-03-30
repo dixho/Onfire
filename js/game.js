@@ -1,6 +1,16 @@
 function main() {
     activarEventsListener()
     recogerDatos()
+    asignarJugador()
+}
+
+asignarJugador = () =>{
+    document.getElementById("jugadortx").textContent = jugadores[numJugador]
+}
+
+cambiarJugador = () =>{
+    
+    document.getElementById("jugadortx").textContent = jugadores[++numJugador]
 }
 
 recogerDatos = () => {
@@ -13,6 +23,7 @@ function activarEventsListener() {
 }
 
 verdad = () => {
+    cambiarJugador()
     if (document.getElementById("TextTipo").textContent != "Verdad") {
         
         document.getElementById("TextTipo").textContent = "Verdad"
@@ -24,6 +35,9 @@ verdad = () => {
 }
 
 reto = () => {
+    cambiarJugador(
+        
+    )
     var fraseFinal;
     if (document.getElementById("TextTipo").textContent != "Reto") {
         document.getElementById("TextTipo").textContent = "Reto"
@@ -136,5 +150,7 @@ cambiarCaracter = (frase,tiempo) => {
     var jugadores = new Array()
 
     var last;
+
+    var numJugador = 0;
 
     window.addEventListener("load", main, false);
