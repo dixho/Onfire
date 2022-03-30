@@ -9,8 +9,13 @@ asignarJugador = () =>{
 }
 
 cambiarJugador = () =>{
-    
-    document.getElementById("jugadortx").textContent = jugadores[++numJugador]
+    if(numJugador > jugadores.length - 1){
+        console.log(numJugador + "entra")
+        numJugador = 0;
+        console.log(numJugador + "despues")
+    }
+    document.getElementById("jugadortx").textContent = jugadores[numJugador]
+    numJugador++
 }
 
 recogerDatos = () => {
@@ -36,7 +41,7 @@ verdad = () => {
 
 reto = () => {
     cambiarJugador(
-        
+
     )
     var fraseFinal;
     if (document.getElementById("TextTipo").textContent != "Reto") {
