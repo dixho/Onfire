@@ -80,12 +80,21 @@ header{
     font-size: 1.5em;
 }
 
+#TextCastigo{
+    font-size: 1.5em;
+}
+
 #TextTipo{
     margin: auto;
     width: 100%;
     text-align: center;
     font-size: 1.5em;
     
+}
+
+#divisor{
+    display: flex;
+    flex-direction: row;
 }
 
 #tipo{

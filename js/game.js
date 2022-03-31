@@ -28,6 +28,9 @@ function activarEventsListener() {
 }
 
 verdad = () => {
+    if(document.getElementById("TextCastigo").textContent != ""){
+        document.getElementById("TextCastigo").textContent = ""
+    }
     cambiarJugador()
     if (document.getElementById("TextTipo").textContent != "Verdad") {
         
@@ -67,11 +70,19 @@ reto = () => {
 
 
 
-        document.getElementById("TextPregunta").textContent = fraseFinal;
+        escribirReto(fraseFinal,rando)
     }else{
-        document.getElementById("TextPregunta").textContent = frasesReto[rando].frase;
+        escribirReto(frasesReto[rando].frase,rando)
     }
+
 }
+
+    escribirReto = (frase,rando) =>{
+        document.getElementById("TextPregunta").textContent = frase
+        document.getElementById("TextCastigo").textContent = "O bebe durante " + frasesReto[rando].castigo + " segundos"
+    }
+
+
 
 cambiarCaracter = (frase,tiempo) => {
     if(tiempo == true){
@@ -95,7 +106,16 @@ cambiarCaracter = (frase,tiempo) => {
                 break;
         }
     }else{
-        frase = frase.replace("|",jugadores[random(jugadores.length)])
+        frase = frase.replace("|",function(){
+            let r = random(jugadores.length)
+            
+            while(jugadores[r] == document.getElementById("jugadortx").textContent){
+                
+                r = random(jugadores.length)
+            }
+            return jugadores[r]
+        
+        })
     }
 
     
@@ -139,51 +159,51 @@ cambiarCaracter = (frase,tiempo) => {
     var frasesReto = new Array(
         {
             frase: "Haz Twerkin",
-            castigo: 0
+            castigo: 5
         },
         {
             frase: "Haz un calvo",
-            castigo: 0
+            castigo: 10
         },
         {
             frase: "Termina tu copa",
-            castigo: 0
+            castigo: 15
         },
         {
             frase: "3 chupitos",
-            castigo: 0
+            castigo: 5
         },
         {
             frase: "Liate un piti en 45 segundos",
-            castigo: 1
+            castigo: 20
         },
         {
             frase: "Dale tu copa al jugador que peor te caiga",
-            castigo: 2
+            castigo: 30
         },
         {
             frase: "Cada vez que digas sí o no bebes (Durante ~ minutos)",
-            castigo: 1
+            castigo: 20
         },
         {
             frase: "Imita a |",
-            castigo: 0
+            castigo: 10
         },
         {
             frase: "Dale un beso en la mejilla a |",
-            castigo: 2
+            castigo: 30
         },
         {
             frase: "| tiene que meterte un hielo en la camiseta",
-            castigo: 2
+            castigo: 30
         },
         {
             frase: "Dale tu copa a |",
-            castigo: 3
+            castigo: 40
         },
     );
     
-
+        
     var jugadores = new Array()
 
     var last;
