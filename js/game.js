@@ -10,9 +10,9 @@ asignarJugador = () =>{
 
 cambiarJugador = () =>{
     if(numJugador > jugadores.length - 1){
-        console.log(numJugador + "entra")
+        
         numJugador = 0;
-        console.log(numJugador + "despues")
+        
     }
     document.getElementById("jugadortx").textContent = jugadores[numJugador]
     numJugador++
@@ -40,9 +40,7 @@ verdad = () => {
 }
 
 reto = () => {
-    cambiarJugador(
-
-    )
+    cambiarJugador()
     var fraseFinal;
     if (document.getElementById("TextTipo").textContent != "Reto") {
         document.getElementById("TextTipo").textContent = "Reto"
@@ -56,12 +54,12 @@ reto = () => {
     last = rando
     if (rando > 5) {
         
-        if (frasesReto[rando].includes("~")) {
+        if (frasesReto[rando].frase.includes("~")) {
             
-           fraseFinal = cambiarCaracter(frasesReto[rando],true)
-        } else if (frasesReto[rando].includes("|")) {
+           fraseFinal = cambiarCaracter(frasesReto[rando].frase,true)
+        } else if (frasesReto[rando].frase.includes("|")) {
             
-            fraseFinal = cambiarCaracter(frasesReto[rando],false)
+            fraseFinal = cambiarCaracter(frasesReto[rando].frase,false)
         } else {
             
             console.error("Error en la frase: Frase con ~ o | fuera del marcador");
@@ -71,7 +69,7 @@ reto = () => {
 
         document.getElementById("TextPregunta").textContent = fraseFinal;
     }else{
-        document.getElementById("TextPregunta").textContent = frasesReto[rando];
+        document.getElementById("TextPregunta").textContent = frasesReto[rando].frase;
     }
 }
 
@@ -100,7 +98,7 @@ cambiarCaracter = (frase,tiempo) => {
         frase = frase.replace("|",jugadores[random(jugadores.length)])
     }
 
-
+    
     return frase
 }
 
@@ -139,18 +137,52 @@ cambiarCaracter = (frase,tiempo) => {
     );
 
     var frasesReto = new Array(
-        "Haz Twerkin",
-        "Haz un calvo",
-        "Termina tu copa",
-        "3 chupitos de RON",
-        "Liate un piti en 45 segundos",
-        "Dale tu copa al jugador que peor te caiga", //5
-        "Cada vez que digas sí o no bebes (Durante ~ minutos)",
-        "Imita a |",
-        "Dale tu copa a |",
-        "Dale un beso en la mejilla a |",
-        "| tiene que meterte un hielo en la camiseta"
+        {
+            frase: "Haz Twerkin",
+            castigo: 0
+        },
+        {
+            frase: "Haz un calvo",
+            castigo: 0
+        },
+        {
+            frase: "Termina tu copa",
+            castigo: 0
+        },
+        {
+            frase: "3 chupitos",
+            castigo: 0
+        },
+        {
+            frase: "Liate un piti en 45 segundos",
+            castigo: 1
+        },
+        {
+            frase: "Dale tu copa al jugador que peor te caiga",
+            castigo: 2
+        },
+        {
+            frase: "Cada vez que digas sí o no bebes (Durante ~ minutos)",
+            castigo: 1
+        },
+        {
+            frase: "Imita a |",
+            castigo: 0
+        },
+        {
+            frase: "Dale un beso en la mejilla a |",
+            castigo: 2
+        },
+        {
+            frase: "| tiene que meterte un hielo en la camiseta",
+            castigo: 2
+        },
+        {
+            frase: "Dale tu copa a |",
+            castigo: 3
+        },
     );
+    
 
     var jugadores = new Array()
 

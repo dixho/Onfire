@@ -1,7 +1,12 @@
+@font-face {
+    font-family: Kanit-Italic;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
 *{
     margin: 0%;
     padding: 0%;
-    font-family: 'Roboto', sans-serif;
+    font-family: Kanit-Italic;
 }
 
 html,body {
@@ -69,6 +74,10 @@ header{
     text-align: center;
     border-radius: 5em;
     border: 0.4em solid #a2aeb9;
+}
+
+#TextPregunta{
+    font-size: 1.5em;
 }
 
 #TextTipo{
