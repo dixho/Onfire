@@ -54,10 +54,18 @@ header{
     display: flex;
 }
 
-#jugadorText{
-    margin: auto;
+
+.jugador{
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
+#jugadorAnteriortx{
+    left: -200vw;
+    right: 0;
+}
 /* Preguntas */
 
 #preguntas{
@@ -86,6 +94,7 @@ header{
 
 #TextTipo{
     margin: auto;
+    margin-top: 15%;
     width: 100%;
     text-align: center;
     font-size: 1.5em;

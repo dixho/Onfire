@@ -1,25 +1,7 @@
 function main() {
     activarEventsListener()
     recogerDatos()
-    asignarJugador()
-}
-
-asignarJugador = () =>{
-    document.getElementById("jugadortx").textContent = jugadores[numJugador]
-}
-
-cambiarJugador = () =>{
-    if(numJugador > jugadores.length - 1){
-        
-        numJugador = 0;
-        
-    }
-    document.getElementById("jugadortx").textContent = jugadores[numJugador]
-    numJugador++
-}
-
-recogerDatos = () => {
-    jugadores = localStorage.getItem("jugadores").split(",")
+    
 }
 
 function activarEventsListener() {
@@ -27,9 +9,65 @@ function activarEventsListener() {
     document.getElementById("reto").addEventListener("click", reto, false)
 }
 
+recogerDatos = () => {
+    jugadores = localStorage.getItem("jugadores").split(",")
+}
+
+cambiarJugador = () =>{
+    
+
+        if(numJugador == jugadores.length - 1){
+            
+            numJugador = 0;
+            
+        }else{
+
+            numJugador++
+        }
+        animacionCambiarJugador(jugadores[numJugador])
+    
+}
+
+
+    animacionCambiarJugador = (jugadorNuevo) => {
+        if(document.getElementById("TextPregunta").textContent != ""){
+            $("#jugadortx").animate({
+                left: "+=200vw",
+                opacity: 0,
+                
+            },function(){
+
+                document.getElementById("jugadortx").textContent = jugadorNuevo
+            })
+            $("#jugadortx").animate({
+                left: "-=400vw"
+            })
+            $("#jugadortx").animate({
+                opacity:100,
+                left: "+=200vw",
+            })
+        }else{
+            
+            $("#jugadortx").animate({
+                
+                left: "-=200vw",
+            },function(){
+
+                document.getElementById("jugadortx").textContent = jugadorNuevo
+            })
+            $("#jugadortx").show()
+            $("#jugadortx").animate({
+                opacity:100,
+                left:"+=200vw"
+            })    
+        }
+    }
+
+
 verdad = () => {
+    $("#TextPregunta").hide("fast")
     if(document.getElementById("TextCastigo").textContent != ""){
-        document.getElementById("TextCastigo").textContent = ""
+        $("#TextCastigo").hide("slow")
     }
     cambiarJugador()
     if (document.getElementById("TextTipo").textContent != "Verdad") {
@@ -38,12 +76,18 @@ verdad = () => {
     }
     
     document.getElementById("TextPregunta").textContent = frasesVerdad[random(frasesVerdad.length)];
-
+    $("#TextPregunta").show("slow")
 
 }
 
 reto = () => {
+    
+        $("#TextPregunta").hide("fast")
+    
     cambiarJugador()
+    
+        $("#TextCastigo").hide("fast")
+    
     var fraseFinal;
     if (document.getElementById("TextTipo").textContent != "Reto") {
         document.getElementById("TextTipo").textContent = "Reto"
@@ -80,59 +124,55 @@ reto = () => {
     escribirReto = (frase,rando) =>{
         document.getElementById("TextPregunta").textContent = frase
         document.getElementById("TextCastigo").textContent = "O bebe durante " + frasesReto[rando].castigo + " segundos"
+        $("#TextCastigo").show("slow")
+        $("#TextPregunta").show("slow")
     }
 
 
 
-cambiarCaracter = (frase,tiempo) => {
-    if(tiempo == true){
-        let rand = random(4)
-        
-        switch(rand){
-            case 0:
-                frase = frase.replace("~","1")
-                break;
-            case 1:
-                frase = frase.replace("~","5")
-                break;
-            case 2:
-                frase = frase.replace("~","10")
-                break;
-            case 3:
-                frase = frase.replace("~","15")
-                break;
-            case 4:
-                frase = frase.replace("~","30")
-                break;
-        }
-    }else{
-        frase = frase.replace("|",function(){
-            let r = random(jugadores.length)
+    cambiarCaracter = (frase,tiempo) => {
+        if(tiempo == true){
+            let rand = random(4)
             
-            while(jugadores[r] == document.getElementById("jugadortx").textContent){
-                
-                r = random(jugadores.length)
+            switch(rand){
+                case 0:
+                    frase = frase.replace("~","1")
+                    break;
+                case 1:
+                    frase = frase.replace("~","5")
+                    break;
+                case 2:
+                    frase = frase.replace("~","10")
+                    break;
+                case 3:
+                    frase = frase.replace("~","15")
+                    break;
+                case 4:
+                    frase = frase.replace("~","30")
+                    break;
             }
-            return jugadores[r]
-        
-        })
-    }
-
-    
-    return frase
-}
-
-    function x(variable) {
-        if (variable == verdad) {
-
-        } else {
-            document.getElementById("TextTipo").textContent = "Reto"
+        }else{
+            frase = frase.replace("|",function(){
+                let r = random(jugadores.length)
+                console.log(jugadores[r] +" | "+ jugadores[numJugador])
+                while(jugadores[r] == jugadores[numJugador]){
+                    
+                    r = random(jugadores.length)
+                }
+                console.warn(jugadores[r] +" | "+ jugadores[numJugador])
+                return jugadores[r]
+            
+            })
         }
+
+        
+        return frase
     }
 
-    random = (max) => {
-        return Math.floor(Math.random() * max)
-    }
+
+        random = (max) => {
+            return Math.floor(Math.random() * max)
+        }
 
 
     var frasesVerdad = new Array(
@@ -209,5 +249,7 @@ cambiarCaracter = (frase,tiempo) => {
     var last;
 
     var numJugador = 0;
+
+    
 
     window.addEventListener("load", main, false);

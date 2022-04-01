@@ -44,13 +44,23 @@ introducirJugadores = (x) => {
         showLoaderOnConfirm: true,
         preConfirm: (nombre) => {
             if (nombre != "" && nombre != null) {
-                jugadores.push(nombre)
-                if (jugadores.length < cantJugadores) {
-                    ++x
-                    introducirJugadores(x)
+                if(jugadores.indexOf(nombre) == -1){
+                    jugadores.push(nombre)
+                    if (jugadores.length < cantJugadores) {
+                        ++x
+                        introducirJugadores(x)
+                    } else {
+                        
+                        iniciarJuego()
+                    }
                 } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Jugador ya añadido',
+                    })
                     
-                    iniciarJuego()
+                    
                 }
             } else {
                 Swal.fire({
