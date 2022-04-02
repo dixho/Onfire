@@ -31,6 +31,8 @@ cantidadJugadores = () => {
         })
 }
 
+
+
 introducirJugadores = (x) => {
     Swal.fire({
         text: "Introduzca los nombres de los jugadores "+x+"/"+cantJugadores+":",

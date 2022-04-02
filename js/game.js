@@ -1,6 +1,7 @@
 function main() {
     activarEventsListener()
     recogerDatos()
+    // asignarJugador()
     
 }
 
@@ -10,7 +11,32 @@ function activarEventsListener() {
 }
 
 recogerDatos = () => {
-    jugadores = localStorage.getItem("jugadores").split(",")
+
+    jugadores = shuffle(localStorage.getItem("jugadores").split(","))    
+    console.log(jugadores)
+}
+
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+    
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+    
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+    
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+    
+        return array;
+    }
+  
+
+asignarJugador = () => {
+    document.getElementById("jugadortx").textContent = jugadores[numJugador]
 }
 
 cambiarJugador = () =>{
@@ -65,6 +91,8 @@ cambiarJugador = () =>{
 
 
 verdad = () => {
+
+
     $("#TextPregunta").hide("fast")
     if(document.getElementById("TextCastigo").textContent != ""){
         $("#TextCastigo").hide("slow")
@@ -248,7 +276,7 @@ reto = () => {
 
     var last;
 
-    var numJugador = 0;
+    var numJugador = -1;
 
     
 
