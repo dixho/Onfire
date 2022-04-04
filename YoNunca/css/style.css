@@ -85,10 +85,10 @@ body{
 
 #btn{
             
-    padding-left: 5em;
-    padding-right: 5em;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     background-color: rgb(162, 91, 228);
 
     /* box-shadow: 5px 10px 10px rgba(162, 0, 255, 0.863); */
@@ -100,7 +100,7 @@ body{
     left: 0;
     right: 0;
     width: 50%;
-    height: 30%;
+    height: 20%;
     margin: auto;
 
     border-radius: 1em;
