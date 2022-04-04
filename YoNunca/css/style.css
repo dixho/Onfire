@@ -1,0 +1,116 @@
+@font-face {
+    font-family: Kanit-Italic;
+    src: url(../../fonts/Kanit-Italic.ttf);
+}
+
+*{
+    font-family: Kanit-Italic;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("../media/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+#boxGeneral{
+    display: flex;
+}
+
+#boxCentral{
+    margin: auto;
+    
+}
+
+#header{
+    
+    background-color: rgb(105, 44, 161);
+    color: white;
+    font-weight: bold;
+
+    width: 100vw;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 2%;
+
+    box-shadow: 1px 10px 10px rgba(162, 0, 255, 0.863);
+
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+
+}
+
+#header p{
+    clear: left;
+    cursor: default;
+}
+
+#header button{
+    
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    
+}
+
+#home-btn{
+    background-color: rgb(105, 44, 161);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 2em;
+
+    padding: 2%;
+    
+    margin-top: 1.5%;
+    margin-left: 5%;
+    top: 0;
+
+    cursor: pointer;
+
+    font-size: smaller;
+
+}
+
+#home-btn:active{
+    background-color: rgb(162, 0, 255);
+    border: inset 1px;
+}
+
+#btn{
+            
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-color: rgb(162, 91, 228);
+
+    /* box-shadow: 5px 10px 10px rgba(162, 0, 255, 0.863); */
+    border: outset 2px rgb(162, 0, 255);
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 30%;
+    margin: auto;
+
+    border-radius: 1em;
+    color: white;
+
+    cursor: pointer;
+}
+
+#btn:active{
+    background-color: rgb(162, 0, 255);
+    border: inset;
+    color: white;
+}
