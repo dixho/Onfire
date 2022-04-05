@@ -6,11 +6,8 @@ main = () => {
 }
 
 activarListeners = () => {
-    document.getElementById("btn").addEventListener("click", () => {
-        window.location = "./game.html";
-    },false);
-
-    document.getElementById("home-btn").addEventListener("click", () => {
+    
+    document.getElementById("btn-home").addEventListener("click", () => {
         window.location = "../index.html";
     },false)
 }

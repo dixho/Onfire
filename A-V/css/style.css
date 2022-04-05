@@ -38,6 +38,8 @@ header{
 
 #cabezatx{
     cursor: pointer;
+    /* clear: left; */
+    margin: auto;
 }
 
 #caja {
@@ -46,6 +48,29 @@ header{
     backdrop-filter: blur(10px);
     border-radius: 1em;
     text-align: center;
+}
+
+
+#btn-home{
+    background-color: rgb(105, 44, 161);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 2em;
+
+    padding: 2%;
+    
+    margin-top: 1.5%;
+    margin-left: 5%;
+    top: 0;
+    left: 0;
+
+    cursor: pointer;
+
+    font-size: smaller;
+
+    
+    position: absolute;
 }
 /* Jugador */
 

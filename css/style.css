@@ -1,0 +1,78 @@
+@font-face {
+    font-family: Kanit-Italic;
+    src: url(../../fonts/Kanit-Italic.ttf);
+}
+
+*{
+    font-family: Kanit-Italic;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("../media/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+#boxGeneral{
+    display: flex;
+}
+
+#boxCentral{
+    margin: auto;
+    
+}
+
+#header{
+    
+    background-color: rgb(105, 44, 161);
+    color: white;
+    font-weight: bold;
+
+    width: 100vw;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 2%;
+
+    box-shadow: 1px 10px 10px rgba(162, 0, 255, 0.863);
+
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+
+}
+
+#header p{
+    clear: left;
+    cursor: default;
+}
+
+.card{
+    margin: auto;
+    margin-top: 15%;
+    text-align: center;
+}
+
+.card-body{
+    background-color: blueviolet;
+}
+
+#btn-card{
+    background-color: rgb(127, 13, 235);
+    color: white;
+    font-weight: bold;
+    border: 1px solid rgb(127, 13, 235);
+}
+
+#btn-card:hover{
+    background-color: rgb(99, 0, 192);
+    color: rgb(255, 255, 255);
+}
+
+#btn-card:active{
+    background-color: rgb(99, 0, 192);
+    color: rgb(255, 255, 255);
+    border: inset 1px;
+}
