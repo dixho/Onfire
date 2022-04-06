@@ -4,9 +4,7 @@ main = () => {
 
 activarEventsListener = () => {
     document.getElementById("btn").addEventListener("click", jugar, false)
-    document.getElementById("btn-home").addEventListener("click", () => {
-        window.location = "../index.html"
-    }, false)
+    
 }
 
 jugar = () => {
