@@ -221,7 +221,11 @@ reto = () => {
         "¿Te ha gustado alguna vez el padre/madre de algún amigo?",
         "¿Te ha gustado alguna vez algun profesor?",
         "¿Persona más mayor con la que has tenido algo?",
-        "¿Persona más pequeña con la que has tenido algo?"
+        "¿Persona más pequeña con la que has tenido algo?",
+        "¿Con que famosa lo harías?",
+        "¿Alguna vez te han pillado teniendo sexo?",
+        "¿De qué parte del cuerpo estás más orgulloso/a?",
+        "¿Alguna vez has tenido sexo en un lugar público?",
     );
 
     var frasesReto = new Array(

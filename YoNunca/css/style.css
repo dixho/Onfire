@@ -10,12 +10,12 @@
     box-sizing: border-box;
 }
 
-body{
+html,body{
     background-image: url("../media/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
+    height: 100%;
+    
 }
 
 #boxGeneral{
@@ -92,7 +92,6 @@ header button{
     padding-bottom: 1em;
     background-color: rgb(137, 46, 221);
 
-    /* box-shadow: 5px 10px 10px rgba(162, 0, 255, 0.863); */
     border: outset 2px rgb(162, 0, 255);
 
     position: absolute;
@@ -148,7 +147,7 @@ header button{
     
     
     background-color: #9c8cf5;
-    display: flex;    
+    
     padding: 20%;
     padding-top: 0%;
     width: 90%;
@@ -163,12 +162,12 @@ header button{
 }
 
 #text-div{
-    position: absolute;
+
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 50%;
+    width: 100%;
     height: 20%;
     margin: auto;
     
@@ -176,10 +175,9 @@ header button{
 
 #text{
     
-    
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin-top:50%;
+    margin-bottom: 50%;
+    font-size: 1.5em;
     
 }
 
@@ -189,10 +187,13 @@ header button{
 }
 
 #player-text{
+
+    margin: auto;
     position: absolute;
     left: 0;
     right: 0;
     text-align: center;
+    font-size: 1.5em;
 
     color: white;
 }

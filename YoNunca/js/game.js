@@ -5,6 +5,18 @@ main = () => {
     asignarPregunta()
 }
 
+activarEventos = () => {
+    document.getElementById("header-text").addEventListener("click", () => {
+        window.location = "./index.html";
+    },false);
+
+    $("#btn-next").click(() => {
+        
+        cambiarJugador();
+        cambiarText();
+    });
+}
+
 asignarPregunta = () => {
     $("#text").text(frases[random(frases.length)]).animate({
         opacity: 1
@@ -45,17 +57,6 @@ function shuffle(array) {
     return array;
 }
 
-activarEventos = () => {
-    document.getElementById("header-text").addEventListener("click", () => {
-        window.location = "./index.html";
-    },false);
-
-    $("#btn-next").click(() => {
-        
-        cambiarJugador();
-        cambiarText();
-    });
-}
 
 cambiarText = () => {
     $("#text-div").animate({
@@ -63,7 +64,7 @@ cambiarText = () => {
     },() => {
         let r = random(frases.length)
     
-        while(r == last){
+        while(r === last){
             r = random(frases.length)
             
         }
@@ -104,7 +105,7 @@ animacionCambiarJugador = (jugadorNuevo) => {
             left: "+=200vw",
             opacity: 0,
             
-        },function(){
+        },250,function(){
 
             document.getElementById("player-text").textContent = jugadorNuevo
         })
@@ -120,7 +121,7 @@ animacionCambiarJugador = (jugadorNuevo) => {
         $("#player-text").animate({
             
             left: "-=200vw",
-        },function(){
+        },250,function(){
 
             document.getElementById("player-text").textContent = jugadorNuevo
         })
@@ -128,7 +129,7 @@ animacionCambiarJugador = (jugadorNuevo) => {
         $("#player-text").animate({
             opacity:100,
             left:"+=200vw"
-        })    
+        },250)    
     }
 }
 
@@ -143,7 +144,18 @@ var frases = new Array(
     "Yo nunca me he desmayado bebiendo",
     "Yo nunca he acabado en el suelo por ir borracho",
     "Yo nunca he pensado en otra persona mientras lo hacía",
-    ""
+    "Yo nunca he mandado nudes a la persona equivocada",
+    "Yo nunca he stalkeado a mi ex",
+    "Yo nunca me he desmayado por fumar demasiado",
+    "Yo nunca he tenido que salir corriendo de una fiesta",
+    "Yo nunca he sido pillado haciendolo",
+    "Yo nunca me he emborrachado delante de mis padres",
+    "Yo nunca he sido pillado con porno en el movil",
+    "Yo nunca he vuelto con mi ex",
+    "Yo nunca he mandado una captura de la conversación al mismo contacto",
+    "Yo nunca he vomitado para seguir bebiendo",
+    "Yo nunca he besado a alguien del mismo sexo",
+    
     
 
 )
