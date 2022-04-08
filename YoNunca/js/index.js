@@ -40,31 +40,40 @@ jugar = () => {
             cancelButtonText: 'Cancelar',
             showLoaderOnConfirm: true,
             preConfirm: (nombre) => {
-                if (nombre != "" && nombre != null) {
-                    if(jugadores.indexOf(nombre) == -1){
-                        jugadores.push(nombre)
-                        if (jugadores.length < cantJugadores) {
-                            ++x
-                            introducirJugadores(x)
+                document.getElementsByClassName("swal2-input")[0].addEventListener("keypress",()=>{
+                    if(event.keyCode == 13){
+                        anadirJugador()
+                    }
+                })
+                anadirJugador();
+
+                function anadirJugador() {
+                    if (nombre != "" && nombre != null) {
+                        if (jugadores.indexOf(nombre) == -1) {
+                            jugadores.push(nombre);
+                            if (jugadores.length < cantJugadores) {
+                                ++x;
+                                introducirJugadores(x);
+                            } else {
+
+                                iniciarJuego();
+                            }
                         } else {
-                            
-                            iniciarJuego()
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Jugador ya añadido',
+                            });
+
+
                         }
                     } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: 'Jugador ya añadido',
-                        })
-                        
-                        
+                            text: 'Ingrese un nombre',
+                        });
                     }
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Ingrese un nombre',
-                    })
                 }
             }
         })
