@@ -51,7 +51,7 @@ function activarEventsListener() {
         }
     }, false)
     document.getElementById("minus").addEventListener("click", () =>{
-        jugadores[numJugador].puntos--
+        jugadores[calcJugador()].puntos--
         for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
             document.getElementsByClassName("btn-point")[i].disabled = true
         }
