@@ -13,15 +13,21 @@
 </head>
 
 <body>
+    <div id="load">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+    </div>
     <header id="cabeza">
+        <button class="rounded" id="btn-home">Home</button>
         <div id="caja">
-            <button class="rounded" id="btn-home">Home</button>
             <h1 id="cabezatx" class="neon">A & V</h1>
         </div>
     </header>
 
     <div id="jugador">
         <div id="box">
+            <h1 class="jugador" style="margin-top: 0;" onclick="temp()">Siguente Jugador:</h1>
             <h1 id="jugadortx" class="jugador"></h1>
             
         </div>
@@ -31,6 +37,10 @@
         <h3 id="TextTipo">Selecciona una opción</h3>
     </div>
     <div id="preguntas" class="mx-auto">
+        <div id="botonera">
+            <button id="plus" class="btn-point" disabled>+1</button>
+            <button id="minus" class="btn-point" disabled>-1</button>
+        </div>
         <div id="tablero">
             <div id="pregunta">
                 <p id="TextPregunta"></p>
@@ -59,9 +69,12 @@
 <script src="./js/game.js"></script>
 <script src="./js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
 
 <!-- Atribuciones -->
 
-<!-- <a href='https://www.freepik.es/vectores/fondo-granulado'>Vector de fondo granulado creado por freepik - www.freepik.es</a> -->
+<!-- <a href='https://www.freepik.es/vectores/fondo-granulado'>Vector de fondo granulado creado por freepik - www.freepik.es</a> 
+
+<a href='https://www.freepik.es/fotos/fiesta-discoteca'>Foto de fiesta discoteca creado por freepik - www.freepik.es</a> -->

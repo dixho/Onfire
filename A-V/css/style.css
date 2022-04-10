@@ -13,8 +13,31 @@ html,body {
     height: 100%;
     width: 100vw;
     margin: 0%;
-    background-image: url("../images/5495619.jpg");
+    background-image: url("../images/fondo1.jpg");
     background-size: cover
+}
+
+#load{
+    position: absolute;
+    float: left;
+    background-color: rgba(94, 94, 94, 0.863);
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#load div{
+    margin: auto;
+}
+#load span{
+    margin: auto;
+}
+
+.spinner-border{
+    width: 5em;
+    height: 5em;
 }
 
 /* Cabecera */
@@ -26,13 +49,13 @@ header{
 
 #cabeza {
     display: flex;
-    background-color: #1fbdaf;
+    background-color: #3a2939;
     width: 100%;
-    height: 10%;
+    height: 8%;
     color: white;
     text-align: center;
-    border-bottom-left-radius: 2em;    
-    border-bottom-right-radius: 2em;
+    border-bottom-left-radius: 1.5em;    
+    border-bottom-right-radius: 1.5em;
     backdrop-filter: blur(15px);
 }
 
@@ -52,31 +75,30 @@ header{
 
 
 #btn-home{
-    background-color: rgb(105, 44, 161);
+    background-color: #493448;
     color: white;
     font-weight: bold;
     border: none;
     border-radius: 2em;
-
     padding: 2%;
-    
     margin-top: 1.5%;
     margin-left: 5%;
     top: 0;
     left: 0;
-
     cursor: pointer;
-
     font-size: smaller;
-
-    
+    float: left;
+    left: 0;
     position: absolute;
+    text-decoration: underline;
+    
 }
 /* Jugador */
 
 #jugador{
     margin-top: 5%;
     display: flex;
+    color: white;
 }
 
 
@@ -85,6 +107,21 @@ header{
     left: 0;
     right: 0;
     text-align: center;
+}
+
+#jugadortx{
+    margin: auto;
+    margin-top: 10%;
+    width: 40%;
+    background-color: #493448;
+    ;
+    border-radius: 1em;
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    padding: 2%;
+    cursor: pointer;
 }
 
 /* Preguntas */
@@ -103,6 +140,40 @@ header{
     text-align: center;
     border-radius: 5em;
     border: 0.4em solid #a2aeb9;
+    flex-direction: row;
+}
+
+#botonera{
+    position: absolute;
+    left: 9vw;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-top: 40vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-point{
+    background-color: #493448;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 2em;
+
+    width: 10vw;
+    padding: 10%;
+/*     
+    margin-top: 1.5%;
+    margin-left: 5%;
+    top: 0;
+    left: 0; */
+
+    cursor: pointer;
+
+    font-size: smal;
+
 }
 
 #TextPregunta{
@@ -113,12 +184,14 @@ header{
     font-size: 1.5em;
 }
 
+
 #TextTipo{
     margin: auto;
-    margin-top: 15%;
+    margin-top: 22%;
     width: 100%;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
+    color: white;
     
 }
 
@@ -162,6 +235,11 @@ header{
     margin-right: 1em;
 }
 
+#reto{
+    background-color: #b102f7;
+    border-color: #b102f7;
+}
+
 /* pie */
 
 #pie {
@@ -198,14 +276,14 @@ a{
 }
 
 .neon {
-    font-size: 50px;
-    letter-spacing:-2px;
+    font-size: 40px;
+    letter-spacing:-4px;
     color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
-    -webkit-text-fill-color: #a791c7;
-    -webkit-text-stroke-color:#d05bff;
+    text-shadow: 0 0 5px rgb(139, 103, 103), 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
+    -webkit-text-fill-color: #7e5fac;
+    -webkit-text-stroke-color:#9f26cf;
     -webkit-text-stroke-width:0.2px;
-    -moz-text-fill-color: #F4ECFF;
-    -moz-text-stroke-color:#b102f7;
+    -moz-text-fill-color: #d9c7f3;
+    -moz-text-stroke-color:#7c06aa;
     -moz-text-stroke-width:0.2px;
     }

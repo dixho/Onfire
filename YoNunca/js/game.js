@@ -25,14 +25,14 @@ asignarPregunta = () => {
 }
 
 asignarJugador = () => {
-    $("#player-text").text(jugadores[random(jugadores.length)]).animate({
+    $("#player-text").text(jugadores[numJugador]).animate({
         opacity: 1
     },600)
 }
 
 recogerDatos = () => {
-
-    jugadores = shuffle(localStorage.getItem("jugadores").split(","))    
+    jugadores = []
+    jugadores = shuffle(sessionStorage.getItem("jugadores").split(","))    
     
 
     
@@ -99,38 +99,23 @@ cambiarJugador = () =>{
 
 }
 
+
 animacionCambiarJugador = (jugadorNuevo) => {
-    if(document.getElementById("player-text").textContent != ""){
-        $("#player-text").animate({
-            left: "+=200vw",
-            opacity: 0,
-            
-        },250,function(){
-
-            document.getElementById("player-text").textContent = jugadorNuevo
-        })
-        $("#player-text").animate({
-            left: "-=400vw"
-        })
-        $("#player-text").animate({
-            opacity:100,
-            left: "+=200vw",
-        })
-    }else{
-        
-        $("#player-text").animate({
-            
-            left: "-=200vw",
-        },250,function(){
-
-            document.getElementById("player-text").textContent = jugadorNuevo
-        })
-        $("#player-text").show()
-        $("#player-text").animate({
-            opacity:100,
-            left:"+=200vw"
-        },250)    
-    }
+        console.log(jugadorNuevo)
+    $("#player-text").animate({
+        left: "+=200vw",
+        opacity: 0
+    },()=>{
+        document.getElementById("player-text").textContent = jugadorNuevo
+    })
+    $("#player-text").animate({
+        left: "-=400vw"
+    })
+    $("#player-text").animate({
+        opacity:100,
+        left: "+=200vw",
+    })
+ 
 }
 
 var frases = new Array(
@@ -155,7 +140,17 @@ var frases = new Array(
     "Yo nunca he mandado una captura de la conversación al mismo contacto",
     "Yo nunca he vomitado para seguir bebiendo",
     "Yo nunca he besado a alguien del mismo sexo",
-    
+    "Yo nunca he dicho que no vuelvo a beber",
+    "Yo nunca he hecho sexting",
+    "Yo nunca he estado con una persona sin haber superado a mi ex",
+    "Yo nunca me he arrepentido de liarme con alguien",
+    "Yo nunca he estado en la friendzone",
+    "Yo nunca me caí en público",
+    "Yo nunca me dormí en la calle",
+    "Yo nunca me comí un plátano como si fuera una polla",
+    "Yo nunca toque un culo y me hice el despistado",
+    "Yo nunca me choque contra un cristal",
+    ""
     
 
 )
@@ -164,7 +159,7 @@ random = (max) => {
     return Math.floor(Math.random() * max)
 }
 
-var numJugador = -1;
+var numJugador = 0;
 
 var last;
 

@@ -1,18 +1,74 @@
 function main() {
     activarEventsListener()
     recogerDatos()
-    // asignarJugador()
-    
+    asignarJugador()
+    seleccionarRondas()
+
+    cargar()
+}
+
+seleccionarRondas = () =>{
+
+    Swal.fire({
+        title: 'Seleccione la cantidad de rondas',
+        input: 'radio',
+        inputOptions: {
+            "1": '1',
+            '5': '5',
+            '10': '10',
+            '-1': '∞',
+            
+        },
+        inputValue: '1',
+        showCancelButton: false,
+        allowEscapeKey:false,
+        allowOutsideClick:false,
+        inputValidator: (value) => {
+            if (!value) {
+                return 'Por favor seleccione una ronda'
+            }
+        }
+    }).then((result) => {
+        if (result.value) {
+            rondas = parseInt(result.value)*jugadores.length
+        }
+    }
+    )
+       
+}
+
+cargar = () =>{
+    document.getElementById("load").style.display = "none"
 }
 
 function activarEventsListener() {
     document.getElementById("verdad").addEventListener("click", verdad, false)
     document.getElementById("reto").addEventListener("click", reto, false)
+    document.getElementById("plus").addEventListener("click", () =>{
+        jugadores[calcJugador()].puntos++
+        for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
+            document.getElementsByClassName("btn-point")[i].disabled = true
+        }
+    }, false)
+    document.getElementById("minus").addEventListener("click", () =>{
+        jugadores[numJugador].puntos--
+        for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
+            document.getElementsByClassName("btn-point")[i].disabled = true
+        }
+    }, false)
 }
 
-recogerDatos = () => {
+    calcJugador = () => {
+        if(numJugador == 0){
+            return jugadores.length - 1
+        }else{
+            return numJugador - 1
+        }
+    }
 
-    jugadores = shuffle(localStorage.getItem("jugadores").split(","))    
+recogerDatos = () => {
+    jugadores = []
+    jugadores = shuffle(JSON.parse(sessionStorage.getItem("jugadores[]")))    
     console.log(jugadores)
 }
 
@@ -36,7 +92,7 @@ recogerDatos = () => {
   
 
 asignarJugador = () => {
-    document.getElementById("jugadortx").textContent = jugadores[numJugador]
+    document.getElementById("jugadortx").textContent = jugadores[numJugador].nombre
 }
 
 cambiarJugador = () =>{
@@ -50,19 +106,17 @@ cambiarJugador = () =>{
 
             numJugador++
         }
-        animacionCambiarJugador(jugadores[numJugador])
+        animacionCambiarJugador(jugadores[numJugador].nombre)
     
 }
 
 
     animacionCambiarJugador = (jugadorNuevo) => {
-        if(document.getElementById("TextPregunta").textContent != ""){
+        
             $("#jugadortx").animate({
                 left: "+=200vw",
-                opacity: 0,
-                
-            },function(){
-
+                opacity: 0
+            },()=>{
                 document.getElementById("jugadortx").textContent = jugadorNuevo
             })
             $("#jugadortx").animate({
@@ -72,43 +126,135 @@ cambiarJugador = () =>{
                 opacity:100,
                 left: "+=200vw",
             })
-        }else{
-            
-            $("#jugadortx").animate({
-                
-                left: "-=200vw",
-            },function(){
-
-                document.getElementById("jugadortx").textContent = jugadorNuevo
-            })
-            $("#jugadortx").show()
-            $("#jugadortx").animate({
-                opacity:100,
-                left:"+=200vw"
-            })    
-        }
+         
     }
 
 
 verdad = () => {
-
-
-    $("#TextPregunta").hide("fast")
-    if(document.getElementById("TextCastigo").textContent != ""){
-        $("#TextCastigo").hide("slow")
-    }
-    cambiarJugador()
-    if (document.getElementById("TextTipo").textContent != "Verdad") {
+    console.log(jugadores)
+    console.log(rondaActual + "| " + rondas)
+    if(document.getElementsByClassName("btn-point")[0].disabled == true || FTCheck == true || rondas == -1){
+    if(rondas == -1){
+        console.log("inf")
+            $("#plus").hide("fast")
+            $("#minus").hide("fast")
         
-        document.getElementById("TextTipo").textContent = "Verdad"
-    }
-    
-    document.getElementById("TextPregunta").textContent = frasesVerdad[random(frasesVerdad.length)];
-    $("#TextPregunta").show("slow")
+        $("#TextPregunta").hide("fast")
+        if(document.getElementById("TextCastigo").textContent != ""){
+            $("#TextCastigo").hide("slow")
+        }
+        cambiarJugador()
+        if (document.getElementById("TextTipo").textContent != "Verdad") {
+            
+            document.getElementById("TextTipo").textContent = "Verdad"
+        }
+        
+        document.getElementById("TextPregunta").textContent = frasesVerdad[random(frasesVerdad.length)];
+        $("#TextPregunta").show("slow")
 
+    }else if(rondaActual < rondas){
+            rondaActual++
+            for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
+                document.getElementsByClassName("btn-point")[i].disabled = false
+            }
+
+            $("#TextPregunta").hide("fast")
+            if(document.getElementById("TextCastigo").textContent != ""){
+                $("#TextCastigo").hide("slow")
+            }
+            cambiarJugador()
+            if (document.getElementById("TextTipo").textContent != "Verdad") {
+                
+                document.getElementById("TextTipo").textContent = "Verdad"
+            }
+            
+            document.getElementById("TextPregunta").textContent = frasesVerdad[random(frasesVerdad.length)];
+            $("#TextPregunta").show("slow")
+
+        }else{
+            Swal.fire({
+                title: "Fin del juego",
+                text: "Se acabaron las rondas",
+                icon: "success",
+                confirmButtonText: "Ver resultados",
+                allowEscapeKey:false,
+                allowOutsideClick:false,
+            }).then((result) => {
+                if (result.value) {
+                    sessionStorage.setItem("jugadores[]", JSON.stringify(jugadores))
+                    window.location.href = "resultados.html"
+                }
+
+            })
+        }
+    }else{
+        Swal.fire({
+            title: "No has contado puntos",
+            text: "Has de contar puntos en la ronda actual",
+            icon: "error",
+            confirmButtonText: "Ok",
+            allowEscapeKey:false,
+            allowOutsideClick:false,
+        })
+    }
+    FTCheck = false
 }
 
 reto = () => {
+    console.log(jugadores)
+    console.log(rondaActual + "| " + rondas)
+
+    if(document.getElementsByClassName("btn-point")[0].disabled == true || FTCheck == true || rondas == -1){
+    if(rondas == -1){
+        console.log("inf")
+        
+        $("#plus").hide("fast")
+        $("#minus").hide("fast")
+     
+        $("#TextPregunta").hide("fast")
+    
+    cambiarJugador()
+    
+        $("#TextCastigo").hide("fast")
+    
+    var fraseFinal;
+    if (document.getElementById("TextTipo").textContent != "Reto") {
+        document.getElementById("TextTipo").textContent = "Reto"
+    }
+
+    let rando = random(frasesReto.length)
+    while(rando == last){
+        rando = random(frasesReto.length)
+    }
+
+    last = rando
+    if (rando > 5) {
+        
+        if (frasesReto[rando].frase.includes("~")) {
+            
+           fraseFinal = cambiarCaracter(frasesReto[rando].frase,true)
+        } else if (frasesReto[rando].frase.includes("|")) {
+            
+            fraseFinal = cambiarCaracter(frasesReto[rando].frase,false)
+        } else {
+            
+            console.error("Error en la frase: Frase con ~ o | fuera del marcador");
+        }
+
+
+
+        escribirReto(fraseFinal,rando)
+    }else{
+        escribirReto(frasesReto[rando].frase,rando)
+    }
+    }
+    else if(rondaActual < rondas){
+
+        rondaActual++
+        for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
+            document.getElementsByClassName("btn-point")[i].disabled = false
+        }
+
     
         $("#TextPregunta").hide("fast")
     
@@ -146,8 +292,35 @@ reto = () => {
     }else{
         escribirReto(frasesReto[rando].frase,rando)
     }
+    }
+    else{
+        Swal.fire({
+            title: "Fin del juego",
+            text: "Se acabaron las rondas",
+            icon: "success",
+            confirmButtonText: "Ver resultados",
+            allowEscapeKey:false,
+            allowOutsideClick:false,
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "resultados.html"
+            }
 
+        })
+    }
+    }else{
+        Swal.fire({
+            title: "No has contado puntos",
+            text: "Has de contar puntos en la ronda actual",
+            icon: "error",
+            confirmButtonText: "Ok",
+            allowEscapeKey:false,
+            allowOutsideClick:false,
+        })
+    }
+    FTCheck = false
 }
+
 
     escribirReto = (frase,rando) =>{
         document.getElementById("TextPregunta").textContent = frase
@@ -182,13 +355,13 @@ reto = () => {
         }else{
             frase = frase.replace("|",function(){
                 let r = random(jugadores.length)
-                console.log(jugadores[r] +" | "+ jugadores[numJugador])
+                
                 while(jugadores[r] == jugadores[numJugador]){
                     
                     r = random(jugadores.length)
                 }
-                console.warn(jugadores[r] +" | "+ jugadores[numJugador])
-                return jugadores[r]
+                
+                return jugadores[r].nombre
             
             })
         }
@@ -280,8 +453,11 @@ reto = () => {
 
     var last;
 
-    var numJugador = -1;
+    var numJugador = 0;
 
+    var FTCheck = true // Variable para comprobar que es la primera vez de la partida
     
+    var rondas;
+    var rondaActual = 0;
 
     window.addEventListener("load", main, false);

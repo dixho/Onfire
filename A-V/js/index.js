@@ -8,6 +8,7 @@ activarEventsListener = () => {
 }
 
 jugar = () => {
+    jugadores=[];
     cantidadJugadores()
 }
 
@@ -48,7 +49,7 @@ introducirJugadores = (x) => {
         preConfirm: (nombre) => {
             if (nombre != "" && nombre != null) {
                 if(jugadores.indexOf(nombre) == -1){
-                    jugadores.push(nombre)
+                    jugadores.push({nombre: nombre, puntos: 0})
                     if (jugadores.length < cantJugadores) {
                         ++x
                         introducirJugadores(x)
@@ -77,8 +78,23 @@ introducirJugadores = (x) => {
 }
 
 iniciarJuego = () => {
-    localStorage.setItem("jugadores", jugadores)
+    sessionStorage.setItem("jugadores[]", JSON.stringify(jugadores))
     window.location.href = "./game.html"
+}
+
+test = () => {
+    var jugadores2 = new Array()
+    
+    jugadores2.push({nombre: "Fran", puntos: 20})
+    jugadores2.push({nombre: "Jose", puntos: 10})
+    sessionStorage.setItem('jugadores[]', JSON.stringify(jugadores2));
+    console.log(sessionStorage)
+
+    var recogida = new Array()
+
+    recogida = JSON.parse(sessionStorage.getItem("jugadores[]"))
+    console.log(recogida)
+    
 }
 
 var cantJugadores

@@ -7,6 +7,7 @@ activarEventos = () => {
 }
 
 jugar = () => {
+    jugadores = []
     Swal.fire({
         text: "Número de Jugadores:",
         input: 'number',
@@ -80,14 +81,11 @@ jugar = () => {
     }
 
     iniciarJuego = () => {
-        localStorage.setItem("jugadores", jugadores)
+        sessionStorage.setItem("jugadores", jugadores)
         window.location.href = "./game.html"
     }
 
-    function Jugador(nombre, bebida) {
-        this.nombre = nombre
-        this.bebida = bebida
-    }
+    
 
 var jugadores = new Array()
 
