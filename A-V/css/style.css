@@ -7,6 +7,8 @@
     margin: 0%;
     padding: 0%;
     font-family: Kanit-Italic;
+    font-display: swap;
+    scrollbar-width: none;
 }
 
 html,body {
@@ -93,6 +95,15 @@ header{
     text-decoration: underline;
     
 }
+
+#info{
+    float: left;
+    bottom: 0;
+    left:5%;
+    position: absolute;
+    text-decoration: solid;
+    color: black;
+}
 /* Jugador */
 
 #jugador{
@@ -134,7 +145,8 @@ header{
     padding: 20%;
     padding-top: 0%;
     width: 90%;
-    margin-top: 1em;
+    margin-top: 7em;
+    margin-bottom: 0;
     padding-bottom: 0;
     height: 20em;
     text-align: center;
@@ -187,7 +199,7 @@ header{
 
 #TextTipo{
     margin: auto;
-    margin-top: 22%;
+    margin-top: 3em;
     width: 100%;
     text-align: center;
     font-size: 1em;
@@ -201,7 +213,7 @@ header{
 }
 
 #tipo{
-    margin-top: 2em;
+    margin-top: 0em;
 }
 
 #tablero{
@@ -287,3 +299,31 @@ a{
     -moz-text-stroke-color:#7c06aa;
     -moz-text-stroke-width:0.2px;
     }
+
+#howTo{
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.774);
+}
+
+#howTo-title{
+    margin: auto;
+    margin-top: 5%;
+}
+
+#howTo-list{
+    margin: auto;
+    margin-top: 5%;
+}
+
+#howTo-list li{
+    margin-top: 12%;
+}
+
+#howTo-list > li:first-child{
+    margin-top: 0;
+}
+
+#howTo-list dl{
+    padding-top: 3%;
+}

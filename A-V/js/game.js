@@ -195,7 +195,33 @@ verdad = () => {
             confirmButtonText: "Ok",
             allowEscapeKey:false,
             allowOutsideClick:false,
+
+        }).then((result) =>{
+            if(result.isConfirmed == true){
+                setTimeout(() => {
+                    $("#plus").animate({
+                        opacity: 0
+                    },()=>{
+                        $("#plus").animate({
+                            opacity: 100
+                        })
+                    })
+                    $("#minus").animate({
+                        opacity: 0
+                    },()=>{
+                        $("#minus").animate({
+                            opacity: 100
+                        })
+                    })
+
+                },500)
+            }
         })
+        
+        
+            
+    
+        
     }
     FTCheck = false
 }

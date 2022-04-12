@@ -14,8 +14,13 @@ body{
     background-image: url("../media/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 60%;
     height: 100vh;
+
+   
 }
+
+
 
 #boxGeneral{
     display: flex;
@@ -28,7 +33,7 @@ body{
 
 #header{
     
-    background-color: rgb(105, 44, 161);
+    background-color: #38015471;
     color: white;
     font-weight: bold;
 
@@ -37,7 +42,7 @@ body{
     padding-top: 3%;
     padding-bottom: 2%;
 
-    box-shadow: 1px 10px 10px rgba(162, 0, 255, 0.863);
+    box-shadow: 1px 10px 10px #27077462;
 
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
@@ -57,24 +62,25 @@ body{
 }
 
 .card-body{
-    background-color: blueviolet;
+    background-color: #18024bbb;
+    
 }
 
 
 #btn-card{
-    background-color: rgb(127, 13, 235);
+    background-color: #3f218191;
     color: white;
     font-weight: bold;
-    border: 1px solid rgb(127, 13, 235);
+    border: 1px solid #7f60d6;
 }
 
 #btn-card:hover{
-    background-color: rgb(99, 0, 192);
+    background-color: rgba(99, 0, 192, 0.815);
     color: rgb(255, 255, 255);
 }
 
 #btn-card:active{
-    background-color: rgb(99, 0, 192);
+    background-color: rgba(99, 0, 192, 0.856);
     color: rgb(255, 255, 255);
     border: inset 1px;
 }

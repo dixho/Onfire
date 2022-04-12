@@ -101,7 +101,7 @@ cambiarJugador = () =>{
 
 
 animacionCambiarJugador = (jugadorNuevo) => {
-        console.log(jugadorNuevo)
+        
     $("#player-text").animate({
         left: "+=200vw",
         opacity: 0

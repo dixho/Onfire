@@ -3,7 +3,7 @@ main = () => {
 }
 
 activarEventos = () => {
-    document.getElementById("btn").addEventListener("click",jugar,false);
+    document.getElementById("btn-play").addEventListener("click",jugar,false);
 }
 
 jugar = () => {

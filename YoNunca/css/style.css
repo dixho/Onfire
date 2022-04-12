@@ -3,11 +3,14 @@
     src: url(../../fonts/Kanit-Italic.ttf);
 }
 
+
+
 *{
     font-family: Kanit-Italic;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-width: none;
 }
 
 html,body{
@@ -15,7 +18,7 @@ html,body{
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
-    
+    background-position: 30%;
 }
 
 #boxGeneral{
@@ -29,7 +32,7 @@ html,body{
 
 #header{
     
-    background-color: rgb(105, 44, 161);
+    background-color: #173a4150;
     color: white;
     font-weight: bold;
 
@@ -38,7 +41,7 @@ html,body{
     padding-top: 3%;
     padding-bottom: 2%;
 
-    box-shadow: 1px 10px 10px rgba(162, 0, 255, 0.863);
+    box-shadow: 1px 10px 10px #eb13459d;
 
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
@@ -60,40 +63,42 @@ header button{
     
 }
 
+
 #btn-home{
-    background-color: rgb(105, 41, 161);
+    background-color: #4b37386e;
     color: white;
     font-weight: bold;
     border: none;
     border-radius: 2em;
-
     padding: 2%;
-    
     margin-top: 1.5%;
     margin-left: 5%;
     top: 0;
-
+    left: 0;
     cursor: pointer;
-
     font-size: smaller;
-
+    float: left;
+    left: 0;
+    position: absolute;
+    text-decoration: underline;
+    
 }
 
 #btn-home:active{
-    background-color: rgb(162, 0, 255);
+    background-color: #4b3738b4;
     border: inset 1px;
 }
 
-#btn{
+#btn-play{
             
     padding-left: 2.5em;
     padding-right: 2.5em;
     padding-top: 1em;
     padding-bottom: 1em;
-    background-color: rgb(137, 46, 221);
+    background-color: #f93966b6;
 
-    border: outset 2px rgb(162, 0, 255);
-
+    
+    border: 2px outset #0e65acbd;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -104,13 +109,13 @@ header button{
     margin: auto;
 
     border-radius: 1em;
-    color: white;
+    color: black;
 
     cursor: pointer;
 }
 
-#btn:active{
-    background-color: rgb(162, 0, 255);
+#btn-play:active{
+    background-color: #a9dee494;
     border: inset;
     color: white;
 }
@@ -123,22 +128,24 @@ header button{
 
     margin: auto;
     margin-top: 3em;
-    background-color: #9c8cf5;
+    background-color: #b83856;
     color: white;
     
-    border: outset 2px rgb(162, 0, 255);
-    background-color: rgb(137, 46, 221);
+    border: outset 2px #ca08358c;
+    
     
 
 }
 
 #btn-next:hover{
-    background-color: rgb(162, 0, 255);
+    background-color: #0d2938be;
+    border: outset 2px #0d2938be;
     
 }
 
 #btn-next:active{
-    background-color: rgb(162, 0, 255);
+    background-color: #0d3e58be;
+
     border: inset;
     color: white;
 }
@@ -146,7 +153,7 @@ header button{
 #text-screen{
     
     
-    background-color: #9c8cf5;
+    background-color: #f9396688;
     
     padding: 20%;
     padding-top: 0%;
@@ -156,8 +163,8 @@ header button{
     height: 20em;
     text-align: center;
     border-radius: 5em;
-    border: 2px solid rgb(66, 20, 192);
-    box-shadow: 1px 10px 10px rgba(76, 0, 255, 0.863);
+    border: 2px solid transparent;
+    box-shadow: 1px 10px 10px #f10d42d8;
     
 }
 
@@ -178,7 +185,8 @@ header button{
     margin-top:50%;
     margin-bottom: 50%;
     font-size: 1.5em;
-    
+    color: rgb(255, 255, 255);
+
 }
 
 #player{
@@ -197,8 +205,7 @@ header button{
     margin-top: 5%;
     width: 40%;
     
-    background: rgb(138,43,226);
-    background: radial-gradient(circle, rgba(138,43,226,1) 0%, rgba(138,43,226,1) 60%); 
+    background-color: #c7063388;
     border-radius: 1em;
     backdrop-filter: blur(1px);
     color: white;
