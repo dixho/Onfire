@@ -1,6 +1,6 @@
 main = () => {
     activarEventsListener()
-    vaciarSessionStorage
+    vaciarSessionStorage()
 }
 
 vaciarSessionStorage = () => {
