@@ -2,8 +2,13 @@
 main = () => {
 
     activarListeners();
-
+    nombrarBotonHome();
 }
+
+nombrarBotonHome = () =>{
+    document.getElementById("btn-home").innerHTML = "Onfire"
+}
+
 
 activarListeners = () => {
     

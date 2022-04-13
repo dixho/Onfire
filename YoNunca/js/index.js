@@ -1,5 +1,12 @@
 main = () => {
     activarEventos()
+
+    cargar()
+}
+
+cargar = () =>{
+    document.getElementById("load").style.display = "none"
+    document.getElementById("load").remove()
 }
 
 activarEventos = () => {

@@ -1,0 +1,21 @@
+#btn-home:hover{
+    background-color: #00009a27 !important;
+}
+
+#load{
+    position: absolute;
+    float: left;
+    background-color: rgba(94, 94, 94, 0.863);
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#load div{
+    margin: auto;
+}
+#load span{
+    margin: auto;
+}

@@ -19,23 +19,7 @@ html,body {
     background-size: cover
 }
 
-#load{
-    position: absolute;
-    float: left;
-    background-color: rgba(94, 94, 94, 0.863);
-    height: 100vh;
-    width: 100vw;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-}
 
-#load div{
-    margin: auto;
-}
-#load span{
-    margin: auto;
-}
 
 .spinner-border{
     width: 5em;
@@ -92,7 +76,6 @@ header{
     float: left;
     left: 0;
     position: absolute;
-    text-decoration: underline;
     
 }
 
@@ -158,8 +141,8 @@ header{
 #botonera{
     position: absolute;
     left: 9vw;
-    top: 0;
-    bottom: 0;
+    top: -2%;
+    bottom: 48%;
     margin: auto;
     margin-top: 40vh;
 
@@ -167,12 +150,34 @@ header{
     flex-direction: column;
 }
 
+.btn-point-disabled{
+
+    background-color: #5a4f59;
+    color: white;
+    font-weight: bold;
+    border: none;
+
+    width: 10vw;
+    padding: 10%;
+/*     
+    margin-top: 1.5%;
+    margin-left: 5%;
+    top: 0;
+    left: 0; */
+
+    cursor: no-drop;
+
+    font-size: smal;
+
+
+}
+
+
 .btn-point{
     background-color: #493448;
     color: white;
     font-weight: bold;
     border: none;
-    border-radius: 2em;
 
     width: 10vw;
     padding: 10%;
@@ -186,6 +191,18 @@ header{
 
     font-size: smal;
 
+}
+
+.btn-point:first-child , .btn-point-disabled:first-child{
+    margin-bottom: 20%;
+}
+
+.btn-point:last-child , .btn-point-disabled:last-child{
+    margin-bottom: 20%;
+}
+
+.btn-point:active{
+    background-color: #493448;
 }
 
 #TextPregunta{
@@ -248,43 +265,26 @@ header{
 }
 
 #reto{
-    background-color: #b102f7;
-    border-color: #b102f7;
+    background-color: #e20a0a50;
+    border: solid 2px rgba(158, 4, 4, 0.589);
 }
 
-/* pie */
+#verdad{
+    background-color: #0a0a0a93;
+    border: solid 2px rgba(0, 0, 0, 0.603);
+}
 
-#pie {
+.btn-av-disabled{
     
-    margin-top: 2em;
-    width: 100%;
-    height: 15%;
-    background-color: #7E40C2;
-    border-top-left-radius: 15px;    
-    border-top-right-radius: 15px;
-    display: flex;
-}
+    background-color: #5c565693 !important;
+    color: rgba(255, 255, 255, 0.514) !important;
+    border: solid #0a0a0a93 2px !important;
 
-#Dx {
-    margin: 12%;
-    float: left;
-}
-
-#Js {
-    margin: 12%;
-    float: right;
+    cursor: no-drop;
 }
 
 a{
-    text-decoration: none;
-    color: beige;
-    background-color: gray;
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    width: 20%;
-    height: 25%;
-    margin: 2%;
-    text-align: center;
+    margin-left: 2%;
 }
 
 .neon {
@@ -303,7 +303,7 @@ a{
 #howTo{
     display: flex;
     flex-direction: column;
-    color: rgba(0, 0, 0, 0.774);
+    color: rgba(255, 255, 255, 0.774);
 }
 
 #howTo-title{

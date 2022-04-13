@@ -2,6 +2,13 @@ main = () => {
     recogerDatos();
     ordenarArray();
     mostrarJugadores();
+
+    cargar();
+}
+
+cargar = () =>{
+    document.getElementById("load").style.display = "none"
+    document.getElementById("load").remove()
 }
 
 recogerDatos = () => {

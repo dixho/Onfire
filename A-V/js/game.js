@@ -3,8 +3,15 @@ function main() {
     recogerDatos()
     asignarJugador()
     seleccionarRondas()
-
+    habilitarBotones()
     cargar()
+}
+
+habilitarBotones = () =>{
+    console.log("habilitar botyones")
+    for(let i = 1; i >= 0; i--){
+        document.getElementsByClassName("btn-av-disabled")[i].className = "btn btn-secondary btn-av"
+    }
 }
 
 seleccionarRondas = () =>{
@@ -14,6 +21,7 @@ seleccionarRondas = () =>{
         input: 'radio',
         inputOptions: {
             "1": '1',
+            '3': '3',
             '5': '5',
             '10': '10',
             '-1': '∞',
@@ -39,23 +47,118 @@ seleccionarRondas = () =>{
 
 cargar = () =>{
     document.getElementById("load").style.display = "none"
+    document.getElementById("load").remove()
 }
 
 function activarEventsListener() {
-    document.getElementById("verdad").addEventListener("click", verdad, false)
-    document.getElementById("reto").addEventListener("click", reto, false)
+    document.getElementById("verdad").addEventListener("click", (e) =>{
+        
+        
+        verdad(e)
+        if(document.getElementsByClassName("btn-av-disabled") == undefined){
+            console.log(" hay botones disabled")
+            for(let i = 1; i >= 0; i--){
+                document.getElementsByClassName("btn-av-disabled")[i].addEventListener("click", () =>{
+                    Swal.fire({
+                        title: "No has contado puntos",
+                        text: "Has de contar puntos en la ronda actual",
+                        icon: "error",
+                        confirmButtonText: "Ok",
+                        allowEscapeKey:false,
+                        allowOutsideClick:false,
+            
+                    }).then((result) =>{
+                        if(result.isConfirmed == true){
+                            setTimeout(() => {
+                                $("#plus").animate({
+                                    opacity: 0
+                                },()=>{
+                                    $("#plus").animate({
+                                        opacity: 100
+                                    })
+                                })
+                                $("#minus").animate({
+                                    opacity: 0
+                                },()=>{
+                                    $("#minus").animate({
+                                        opacity: 100
+                                    })
+                                })
+            
+                            },500)
+                        }
+                    })
+                })  
+            }
+        }
+    }, false)
+    document.getElementById("reto").addEventListener("click", (e)=>{
+        
+        reto(e)
+
+        if(document.getElementsByClassName("btn-av-disabled") == undefined){
+            
+            for(let i = 1; i >= 0; i--){
+                document.getElementsByClassName("btn-av-disabled")[i].addEventListener("click", () =>{
+                    Swal.fire({
+                        title: "No has contado puntos",
+                        text: "Has de contar puntos en la ronda actual",
+                        icon: "error",
+                        confirmButtonText: "Ok",
+                        allowEscapeKey:false,
+                        allowOutsideClick:false,
+            
+                    }).then((result) =>{
+                        if(result.isConfirmed == true){
+                            setTimeout(() => {
+                                $("#plus").animate({
+                                    opacity: 0
+                                },()=>{
+                                    $("#plus").animate({
+                                        opacity: 100
+                                    })
+                                })
+                                $("#minus").animate({
+                                    opacity: 0
+                                },()=>{
+                                    $("#minus").animate({
+                                        opacity: 100
+                                    })
+                                })
+            
+                            },500)
+                        }
+                    })
+                })  
+            }
+        }
+    }, false)
+
     document.getElementById("plus").addEventListener("click", () =>{
         jugadores[calcJugador()].puntos++
-        for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
+        
+        for(let i = 1; i >= 0; i--){
+            
             document.getElementsByClassName("btn-point")[i].disabled = true
+            document.getElementsByClassName("btn-point")[i].className = "btn-point-disabled"
         }
+        for(let i = 1; i >= 0; i--){
+            document.getElementsByClassName("btn-av-disabled")[i].className = "btn btn-secondary btn-av"
+        }
+
     }, false)
     document.getElementById("minus").addEventListener("click", () =>{
         jugadores[calcJugador()].puntos--
-        for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
+        for(let i = 1; i >= 0; i--){
+            
             document.getElementsByClassName("btn-point")[i].disabled = true
+            document.getElementsByClassName("btn-point")[i].className = "btn-point-disabled"
+        }
+        for(let i = 1; i >= 0; i--){
+            document.getElementsByClassName("btn-av-disabled")[i].className = "btn btn-secondary btn-av"
         }
     }, false)
+
 }
 
     calcJugador = () => {
@@ -130,63 +233,123 @@ cambiarJugador = () =>{
     }
 
 
-verdad = () => {
-    console.log(jugadores)
-    console.log(rondaActual + "| " + rondas)
-    if(document.getElementsByClassName("btn-point")[0].disabled == true || FTCheck == true || rondas == -1){
-    if(rondas == -1){
-        console.log("inf")
-            $("#plus").hide("fast")
-            $("#minus").hide("fast")
-        
-        $("#TextPregunta").hide("fast")
-        if(document.getElementById("TextCastigo").textContent != ""){
-            $("#TextCastigo").hide("slow")
-        }
-        cambiarJugador()
-        if (document.getElementById("TextTipo").textContent != "Verdad") {
+    verdad = (e) => {
+        console.log("ENtra a verdad")
+    if(e.target.className.includes("btn-av-disabled") == false){
+        console.log("Entra el primer if")
+        console.log(jugadores)
+        console.log(rondaActual + "| " + rondas)
+
+        if(document.getElementsByClassName("btn-point-disabled") != undefined || FTCheck == true || rondas == -1){
+            console.log("Entra el segundo if")
+            if(document.getElementsByClassName("btn-point-disabled").length > 0){
+                for(let i = 1; i >= 0; i--){
+                    
+                    document.getElementsByClassName("btn-point-disabled")[i].disabled = false
+                    document.getElementsByClassName("btn-point-disabled")[i].className = "btn-point"
+                }
+            }
             
-            document.getElementById("TextTipo").textContent = "Verdad"
-        }
-        
-        document.getElementById("TextPregunta").textContent = frasesVerdad[random(frasesVerdad.length)];
-        $("#TextPregunta").show("slow")
 
-    }else if(rondaActual < rondas){
-            rondaActual++
-            for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
-                document.getElementsByClassName("btn-point")[i].disabled = false
+            for(let i = 1; i >= 0; i--){
+                document.getElementsByClassName("btn-av")[i].className = "btn btn-secondary btn-av-disabled"
             }
-
-            $("#TextPregunta").hide("fast")
-            if(document.getElementById("TextCastigo").textContent != ""){
-                $("#TextCastigo").hide("slow")
-            }
-            cambiarJugador()
-            if (document.getElementById("TextTipo").textContent != "Verdad") {
+            console.log("Rondas = " + rondas)
+            if(rondas <= -1){
+                console.log("entra a su if")
+                    $("#plus").hide("fast")
+                    $("#minus").hide("fast")
                 
-                document.getElementById("TextTipo").textContent = "Verdad"
-            }
-            
-            document.getElementById("TextPregunta").textContent = frasesVerdad[random(frasesVerdad.length)];
-            $("#TextPregunta").show("slow")
+                $("#TextPregunta").hide("fast")
+                if(document.getElementById("TextCastigo").textContent != ""){
+                    $("#TextCastigo").hide("slow")
+                }
+                cambiarJugador()
+                if (document.getElementById("TextTipo").textContent != "Verdad") {
+                    
+                    document.getElementById("TextTipo").textContent = "Verdad"
+                }
+                
+                document.getElementById("TextPregunta").textContent = frasesVerdad[random(frasesVerdad.length)];
+                $("#TextPregunta").show("slow")
 
-        }else{
-            Swal.fire({
-                title: "Fin del juego",
-                text: "Se acabaron las rondas",
-                icon: "success",
-                confirmButtonText: "Ver resultados",
-                allowEscapeKey:false,
-                allowOutsideClick:false,
-            }).then((result) => {
-                if (result.value) {
-                    sessionStorage.setItem("jugadores[]", JSON.stringify(jugadores))
-                    window.location.href = "resultados.html"
+                for(let i = 1; i >= 0; i--){
+                    document.getElementsByClassName("btn-av-disabled")[i].className = "btn btn-secondary btn-av"
                 }
 
+            }else if(rondaActual < rondas){
+                    rondaActual++
+                    for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
+                        document.getElementsByClassName("btn-point")[i].disabled = false
+                        document.getElementsByClassName("btn-point")[i].className = "btn-point"
+                    }
+
+                    $("#TextPregunta").hide("fast")
+                    if(document.getElementById("TextCastigo").textContent != ""){
+                        $("#TextCastigo").hide("slow")
+                    }
+                    cambiarJugador()
+                    if (document.getElementById("TextTipo").textContent != "Verdad") {
+                        
+                        document.getElementById("TextTipo").textContent = "Verdad"
+                    }
+                    
+                    document.getElementById("TextPregunta").textContent = frasesVerdad[random(frasesVerdad.length)];
+                    $("#TextPregunta").show("slow")
+
+                }else{
+                    Swal.fire({
+                        title: "Fin del juego",
+                        text: "Se acabaron las rondas",
+                        icon: "success",
+                        confirmButtonText: "Ver resultados",
+                        allowEscapeKey:false,
+                        allowOutsideClick:false,
+                    }).then((result) => {
+                        if (result.value) {
+                            sessionStorage.setItem("jugadores[]", JSON.stringify(jugadores))
+                            window.location.href = "resultados.html"
+                        }
+
+                    })
+                }
+        }else{
+            Swal.fire({
+                title: "No has contado puntos",
+                text: "Has de contar puntos en la ronda actual",
+                icon: "error",
+                confirmButtonText: "Ok",
+                allowEscapeKey:false,
+                allowOutsideClick:false,
+
+            }).then((result) =>{
+                if(result.isConfirmed == true){
+                    setTimeout(() => {
+                        $("#plus").animate({
+                            opacity: 0
+                        },()=>{
+                            $("#plus").animate({
+                                opacity: 100
+                            })
+                        })
+                        $("#minus").animate({
+                            opacity: 0
+                        },()=>{
+                            $("#minus").animate({
+                                opacity: 100
+                            })
+                        })
+
+                    },500)
+                }
             })
+            
+            
+                
+        
         }
+
+        FTCheck = false
     }else{
         Swal.fire({
             title: "No has contado puntos",
@@ -217,123 +380,170 @@ verdad = () => {
                 },500)
             }
         })
-        
-        
-            
-    
-        
     }
-    FTCheck = false
 }
 
-reto = () => {
-    console.log(jugadores)
-    console.log(rondaActual + "| " + rondas)
+reto = (e) => {
+if(e.target.className.includes("btn-av-disabled") == false){        
+        console.log(jugadores)
+        console.log(rondaActual + "| " + rondas)
 
-    if(document.getElementsByClassName("btn-point")[0].disabled == true || FTCheck == true || rondas == -1){
-    if(rondas == -1){
-        console.log("inf")
+        if(document.getElementsByClassName("btn-point-disabled") != undefined || FTCheck == true || rondas == -1){
+            
+            if(document.getElementsByClassName("btn-point-disabled").length > 0){
+                for(let i = 1; i >= 0; i--){
+                    
+                    document.getElementsByClassName("btn-point-disabled")[i].disabled = false
+                    document.getElementsByClassName("btn-point-disabled")[i].className = "btn-point"
+                }
+            }
+            
+            for(let i = 1; i >= 0; i--){
+                document.getElementsByClassName("btn-av")[i].className = "btn btn-secondary btn-av-disabled"
+            }
+        if(rondas <= -1){
+            console.log("inf")
+            
+            $("#plus").hide("fast")
+            $("#minus").hide("fast")
         
-        $("#plus").hide("fast")
-        $("#minus").hide("fast")
-     
-        $("#TextPregunta").hide("fast")
-    
-    cambiarJugador()
-    
-        $("#TextCastigo").hide("fast")
-    
-    var fraseFinal;
-    if (document.getElementById("TextTipo").textContent != "Reto") {
-        document.getElementById("TextTipo").textContent = "Reto"
-    }
-
-    let rando = random(frasesReto.length)
-    while(rando == last){
-        rando = random(frasesReto.length)
-    }
-
-    last = rando
-    if (rando > 5) {
+            $("#TextPregunta").hide("fast")
         
-        if (frasesReto[rando].frase.includes("~")) {
-            
-           fraseFinal = cambiarCaracter(frasesReto[rando].frase,true)
-        } else if (frasesReto[rando].frase.includes("|")) {
-            
-            fraseFinal = cambiarCaracter(frasesReto[rando].frase,false)
-        } else {
-            
-            console.error("Error en la frase: Frase con ~ o | fuera del marcador");
-        }
-
-
-
-        escribirReto(fraseFinal,rando)
-    }else{
-        escribirReto(frasesReto[rando].frase,rando)
-    }
-    }
-    else if(rondaActual < rondas){
-
-        rondaActual++
-        for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
-            document.getElementsByClassName("btn-point")[i].disabled = false
-        }
-
-    
-        $("#TextPregunta").hide("fast")
-    
-    cambiarJugador()
-    
-        $("#TextCastigo").hide("fast")
-    
-    var fraseFinal;
-    if (document.getElementById("TextTipo").textContent != "Reto") {
-        document.getElementById("TextTipo").textContent = "Reto"
-    }
-
-    let rando = random(frasesReto.length)
-    while(rando == last){
-        rando = random(frasesReto.length)
-    }
-
-    last = rando
-    if (rando > 5) {
+            cambiarJugador()
         
-        if (frasesReto[rando].frase.includes("~")) {
-            
-           fraseFinal = cambiarCaracter(frasesReto[rando].frase,true)
-        } else if (frasesReto[rando].frase.includes("|")) {
-            
-            fraseFinal = cambiarCaracter(frasesReto[rando].frase,false)
-        } else {
-            
-            console.error("Error en la frase: Frase con ~ o | fuera del marcador");
-        }
-
-
-
-        escribirReto(fraseFinal,rando)
-    }else{
-        escribirReto(frasesReto[rando].frase,rando)
-    }
-    }
-    else{
-        Swal.fire({
-            title: "Fin del juego",
-            text: "Se acabaron las rondas",
-            icon: "success",
-            confirmButtonText: "Ver resultados",
-            allowEscapeKey:false,
-            allowOutsideClick:false,
-        }).then((result) => {
-            if (result.value) {
-                window.location.href = "resultados.html"
+            $("#TextCastigo").hide("fast")
+        
+            var fraseFinal;
+            if (document.getElementById("TextTipo").textContent != "Reto") {
+                document.getElementById("TextTipo").textContent = "Reto"
             }
 
-        })
-    }
+            let rando = random(frasesReto.length)
+            while(rando == last){
+                rando = random(frasesReto.length)
+            }
+
+            last = rando
+            if (rando > 5) {
+                
+                if (frasesReto[rando].frase.includes("~")) {
+                    
+                fraseFinal = cambiarCaracter(frasesReto[rando].frase,true)
+                } else if (frasesReto[rando].frase.includes("|")) {
+                    
+                    fraseFinal = cambiarCaracter(frasesReto[rando].frase,false)
+                } else {
+                    
+                    console.error("Error en la frase: Frase con ~ o | fuera del marcador");
+                }
+
+
+
+                escribirReto(fraseFinal,rando)
+            }else{
+                escribirReto(frasesReto[rando].frase,rando)
+            }
+            for(let i = 1; i >= 0; i--){
+                document.getElementsByClassName("btn-av-disabled")[i].className = "btn btn-secondary btn-av"
+            }
+        }
+        else if(rondaActual < rondas){
+
+            rondaActual++
+            for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
+                document.getElementsByClassName("btn-point")[i].disabled = false
+            }
+
+        
+            $("#TextPregunta").hide("fast")
+        
+        cambiarJugador()
+        
+            $("#TextCastigo").hide("fast")
+        
+        var fraseFinal;
+        if (document.getElementById("TextTipo").textContent != "Reto") {
+            document.getElementById("TextTipo").textContent = "Reto"
+        }
+
+        let rando = random(frasesReto.length)
+        while(rando == last){
+            rando = random(frasesReto.length)
+        }
+
+        last = rando
+        if (rando > 5) {
+            
+            if (frasesReto[rando].frase.includes("~")) {
+                
+            fraseFinal = cambiarCaracter(frasesReto[rando].frase,true)
+            } else if (frasesReto[rando].frase.includes("|")) {
+                
+                fraseFinal = cambiarCaracter(frasesReto[rando].frase,false)
+            } else {
+                
+                console.error("Error en la frase: Frase con ~ o | fuera del marcador");
+            }
+
+
+
+            escribirReto(fraseFinal,rando)
+        }else{
+            escribirReto(frasesReto[rando].frase,rando)
+        }
+        }
+        else{
+            Swal.fire({
+                title: "Fin del juego",
+                text: "Se acabaron las rondas",
+                icon: "success",
+                confirmButtonText: "Ver resultados",
+                allowEscapeKey:false,
+                allowOutsideClick:false,
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = "resultados.html"
+                }
+
+            })
+        }
+        }else{
+            Swal.fire({
+                title: "No has contado puntos",
+                text: "Has de contar puntos en la ronda actual",
+                icon: "error",
+                confirmButtonText: "Ok",
+                allowEscapeKey:false,
+                allowOutsideClick:false,
+
+            }).then((result) =>{
+                if(result.isConfirmed == true){
+                    setTimeout(() => {
+                        $("#plus").animate({
+                            opacity: 0
+                        },()=>{
+                            $("#plus").animate({
+                                opacity: 100
+                            })
+                        })
+                        $("#minus").animate({
+                            opacity: 0
+                        },()=>{
+                            $("#minus").animate({
+                                opacity: 100
+                            })
+                        })
+
+                    },500)
+                }
+            })
+            
+            
+                
+        
+            
+        }
+        FTCheck = false
     }else{
         Swal.fire({
             title: "No has contado puntos",
@@ -342,9 +552,29 @@ reto = () => {
             confirmButtonText: "Ok",
             allowEscapeKey:false,
             allowOutsideClick:false,
+
+        }).then((result) =>{
+            if(result.isConfirmed == true){
+                setTimeout(() => {
+                    $("#plus").animate({
+                        opacity: 0
+                    },()=>{
+                        $("#plus").animate({
+                            opacity: 100
+                        })
+                    })
+                    $("#minus").animate({
+                        opacity: 0
+                    },()=>{
+                        $("#minus").animate({
+                            opacity: 100
+                        })
+                    })
+
+                },500)
+            }
         })
     }
-    FTCheck = false
 }
 
 
@@ -404,12 +634,12 @@ reto = () => {
 
     var frasesVerdad = new Array(
         "¿Te ha llegado a atraer alguien del grupo?",
-        "Si solo te pudieras llevar a uno a una isla desierta ¿A quién sería?",
+        "Si solo te pudieras llevar a un jugador a una isla desierta ¿A quién sería?",
         "Algo vergonzoso que te haya pasado",
         "¿A cuántas personas has besado en un mismo día?",
         "¿Has mentido jugando a este juego?",
         "¿Te liarias con alguien de aquí?",
-        "¿Has sido infiel/lo serías?",
+        "¿Has sido infiel o lo serías?",
         "¿Harías un trío?",
         "¿Has tenido sexo en un lugar público?",
         "Lugar público más raro dnde has tenido sexo",
@@ -422,9 +652,9 @@ reto = () => {
         "¿Persona más mayor con la que has tenido algo?",
         "¿Persona más pequeña con la que has tenido algo?",
         "¿Con que famosa lo harías?",
+        "¿Con que famoso de tu mismo sexo lo harías?",
         "¿Alguna vez te han pillado teniendo sexo?",
         "¿De qué parte del cuerpo estás más orgulloso/a?",
-        "¿Alguna vez has tenido sexo en un lugar público?",
     );
 
     var frasesReto = new Array(

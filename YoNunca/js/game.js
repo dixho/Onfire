@@ -3,6 +3,8 @@ main = () => {
     recogerDatos();
     asignarJugador();
     asignarPregunta()
+
+    cargar()
 }
 
 activarEventos = () => {
@@ -15,6 +17,11 @@ activarEventos = () => {
         cambiarJugador();
         cambiarText();
     });
+}
+
+cargar = () =>{
+    document.getElementById("load").style.display = "none"
+    document.getElementById("load").remove()
 }
 
 asignarPregunta = () => {
@@ -150,7 +157,7 @@ var frases = new Array(
     "Yo nunca me comí un plátano como si fuera una polla",
     "Yo nunca toque un culo y me hice el despistado",
     "Yo nunca me choque contra un cristal",
-    ""
+    
     
 
 )
