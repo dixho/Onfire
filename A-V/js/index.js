@@ -1,5 +1,10 @@
 main = () => {
     activarEventsListener()
+    vaciarSessionStorage
+}
+
+vaciarSessionStorage = () => {
+    sessionStorage.clear()
 }
 
 activarEventsListener = () => {
@@ -88,12 +93,12 @@ test = () => {
     jugadores2.push({nombre: "Fran", puntos: 20})
     jugadores2.push({nombre: "Jose", puntos: 10})
     sessionStorage.setItem('jugadores[]', JSON.stringify(jugadores2));
-    console.log(sessionStorage)
+    
 
     var recogida = new Array()
 
     recogida = JSON.parse(sessionStorage.getItem("jugadores[]"))
-    console.log(recogida)
+    
     
 }
 

@@ -13,7 +13,7 @@ cargar = () =>{
 
 recogerDatos = () => {
     jugadores = JSON.parse(sessionStorage.getItem("jugadores[]",jugadores));
-    console.log(jugadores);
+    
 }
 
 ordenarArray = () => {

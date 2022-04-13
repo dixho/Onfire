@@ -8,7 +8,7 @@ function main() {
 }
 
 habilitarBotones = () =>{
-    console.log("habilitar botyones")
+    
     for(let i = 1; i >= 0; i--){
         document.getElementsByClassName("btn-av-disabled")[i].className = "btn btn-secondary btn-av"
     }
@@ -56,7 +56,7 @@ function activarEventsListener() {
         
         verdad(e)
         if(document.getElementsByClassName("btn-av-disabled") == undefined){
-            console.log(" hay botones disabled")
+            
             for(let i = 1; i >= 0; i--){
                 document.getElementsByClassName("btn-av-disabled")[i].addEventListener("click", () =>{
                     Swal.fire({
@@ -172,7 +172,7 @@ function activarEventsListener() {
 recogerDatos = () => {
     jugadores = []
     jugadores = shuffle(JSON.parse(sessionStorage.getItem("jugadores[]")))    
-    console.log(jugadores)
+    
 }
 
     function shuffle(array) {
@@ -234,14 +234,14 @@ cambiarJugador = () =>{
 
 
     verdad = (e) => {
-        console.log("ENtra a verdad")
+        
     if(e.target.className.includes("btn-av-disabled") == false){
-        console.log("Entra el primer if")
-        console.log(jugadores)
-        console.log(rondaActual + "| " + rondas)
+        
+        
+        
 
         if(document.getElementsByClassName("btn-point-disabled") != undefined || FTCheck == true || rondas == -1){
-            console.log("Entra el segundo if")
+
             if(document.getElementsByClassName("btn-point-disabled").length > 0){
                 for(let i = 1; i >= 0; i--){
                     
@@ -254,9 +254,9 @@ cambiarJugador = () =>{
             for(let i = 1; i >= 0; i--){
                 document.getElementsByClassName("btn-av")[i].className = "btn btn-secondary btn-av-disabled"
             }
-            console.log("Rondas = " + rondas)
+        
             if(rondas <= -1){
-                console.log("entra a su if")
+            
                     $("#plus").hide("fast")
                     $("#minus").hide("fast")
                 
@@ -385,8 +385,7 @@ cambiarJugador = () =>{
 
 reto = (e) => {
 if(e.target.className.includes("btn-av-disabled") == false){        
-        console.log(jugadores)
-        console.log(rondaActual + "| " + rondas)
+        
 
         if(document.getElementsByClassName("btn-point-disabled") != undefined || FTCheck == true || rondas == -1){
             
@@ -402,7 +401,7 @@ if(e.target.className.includes("btn-av-disabled") == false){
                 document.getElementsByClassName("btn-av")[i].className = "btn btn-secondary btn-av-disabled"
             }
         if(rondas <= -1){
-            console.log("inf")
+            
             
             $("#plus").hide("fast")
             $("#minus").hide("fast")
@@ -502,6 +501,7 @@ if(e.target.className.includes("btn-av-disabled") == false){
                 allowOutsideClick:false,
             }).then((result) => {
                 if (result.value) {
+                    sessionStorage.setItem("jugadores[]", JSON.stringify(jugadores))
                     window.location.href = "resultados.html"
                 }
 
