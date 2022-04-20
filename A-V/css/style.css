@@ -123,7 +123,8 @@ header{
 #preguntas{
     
     
-    background-color: #c7d0d8;
+    background-color: #c7d0d834;
+    color: black;
     display: flex;    
     padding: 20%;
     padding-top: 0%;
@@ -134,14 +135,14 @@ header{
     height: 20em;
     text-align: center;
     border-radius: 5em;
-    border: 0.4em solid #a2aeb9;
+    border: 0.4em solid #a2aeb946;
     flex-direction: row;
 }
 
 #botonera{
     position: absolute;
     left: 9vw;
-    top: -2%;
+    top: -5%;
     bottom: 48%;
     margin: auto;
     margin-top: 40vh;
@@ -156,9 +157,10 @@ header{
     color: white;
     font-weight: bold;
     border: none;
+    border-radius: 1em;
 
-    width: 10vw;
-    padding: 10%;
+    width: 15vw;
+    padding: 30%;
 /*     
     margin-top: 1.5%;
     margin-left: 5%;
@@ -167,7 +169,6 @@ header{
 
     cursor: no-drop;
 
-    font-size: smal;
 
 
 }
@@ -178,9 +179,10 @@ header{
     color: white;
     font-weight: bold;
     border: none;
+    border-radius: 1em;
 
-    width: 10vw;
-    padding: 10%;
+    width: 15vw;
+    padding: 30%;
 /*     
     margin-top: 1.5%;
     margin-left: 5%;
@@ -189,7 +191,6 @@ header{
 
     cursor: pointer;
 
-    font-size: smal;
 
 }
 
@@ -201,8 +202,12 @@ header{
     margin-bottom: 20%;
 }
 
+.btn-point:hover{
+    background-color: #5a4f59;
+}
+
 .btn-point:active{
-    background-color: #493448;
+    background-color: #775976;
 }
 
 #TextPregunta{
@@ -270,8 +275,8 @@ header{
 }
 
 #verdad{
-    background-color: #0a0a0a93;
-    border: solid 2px rgba(0, 0, 0, 0.603);
+    background-color: #3f1c669f;
+    border: solid 2px rgba(15, 32, 107, 0.699);
 }
 
 .btn-av-disabled{

@@ -423,7 +423,7 @@ if(e.target.className.includes("btn-av-disabled") == false){
             }
 
             last = rando
-            if (rando > 5) {
+            if (rando < 5) {
                 
                 if (frasesReto[rando].frase.includes("~")) {
                     
@@ -612,7 +612,7 @@ if(e.target.className.includes("btn-av-disabled") == false){
             frase = frase.replace("|",function(){
                 let r = random(jugadores.length)
                 
-                while(jugadores[r] == jugadores[numJugador]){
+                while(jugadores[r].nombre == jugadores[numJugador].nombre){
                     
                     r = random(jugadores.length)
                 }
@@ -658,34 +658,34 @@ if(e.target.className.includes("btn-av-disabled") == false){
     );
 
     var frasesReto = new Array(
-        {
-            frase: "Haz Twerkin",
-            castigo: 5
-        },
-        {
-            frase: "Haz un calvo",
-            castigo: 10
-        },
-        {
-            frase: "Termina tu copa",
-            castigo: 15
-        },
-        {
-            frase: "3 chupitos",
-            castigo: 5
-        },
-        {
-            frase: "Liate un piti en 45 segundos",
-            castigo: 20
-        },
-        {
-            frase: "Dale tu copa al jugador que peor te caiga",
-            castigo: 30
-        },
-        {
-            frase: "Cada vez que digas sí o no bebes (Durante ~ minutos)",
-            castigo: 20
-        },
+        // {
+        //     frase: "Haz Twerkin",
+        //     castigo: 5
+        // },
+        // {
+        //     frase: "Haz un calvo",
+        //     castigo: 10
+        // },
+        // {
+        //     frase: "Termina tu copa",
+        //     castigo: 15
+        // },
+        // {
+        //     frase: "3 chupitos",
+        //     castigo: 5
+        // },
+        // {
+        //     frase: "Liate un piti en 45 segundos",
+        //     castigo: 20
+        // },
+        // {
+        //     frase: "Dale tu copa al jugador que peor te caiga",
+        //     castigo: 30
+        // },
+        // {
+        //     frase: "Cada vez que digas sí o no bebes (Durante ~ minutos)",
+        //     castigo: 20
+        // },
         {
             frase: "Imita a |",
             castigo: 10
