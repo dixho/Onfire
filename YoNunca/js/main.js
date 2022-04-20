@@ -1,7 +1,7 @@
 
 main = () => {
 
-    activarListeners();
+    activarListenersGenerales();
     nombrarBotonHome();
 }
 
@@ -10,11 +10,25 @@ nombrarBotonHome = () =>{
 }
 
 
-activarListeners = () => {
+activarListenersGenerales = () => {
+
     
     document.getElementById("btn-home").addEventListener("click", () => {
+        
         window.location = "../index.html";
     },false)
+
+
+    if(!window.location.pathname.includes("index.html")){
+        document.getElementById("header-text").addEventListener("click", () => {
+            window.location = "./index.html";
+        },false);
+    }
+}
+
+cargar = () =>{
+    document.getElementById("load").style.display = "none"
+    document.getElementById("load").remove()
 }
 
 window.addEventListener("load",main,false); // Evento de carga de la página 

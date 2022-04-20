@@ -195,40 +195,68 @@ recogerDatos = () => {
   
 
 asignarJugador = () => {
-    document.getElementById("jugadortx").textContent = jugadores[numJugador].nombre
+    document.getElementById("jugadorActualtx").textContent = jugadores[numJugador].nombre
+    document.getElementById("jugadorSiguientetx").textContent = jugadores[numJugador+1].nombre
 }
 
 cambiarJugador = () =>{
     
+    var siguiente=0
 
         if(numJugador == jugadores.length - 1){
             
             numJugador = 0;
-            
+            siguiente = 1;   
         }else{
 
             numJugador++
+
+            if((numJugador+1) == jugadores.length){
+                siguiente = 0;
+            }else{
+                siguiente = numJugador+1
+            }
         }
-        animacionCambiarJugador(jugadores[numJugador].nombre)
+        animacionCambiarJugador(jugadores[numJugador].nombre,jugadores[siguiente].nombre)
+
     
 }
 
 
-    animacionCambiarJugador = (jugadorNuevo) => {
+    animacionCambiarJugador = (jugadorNuevo,jugadorSiguiente) => {
         
-            $("#jugadortx").animate({
-                left: "+=200vw",
-                opacity: 0
-            },()=>{
-                document.getElementById("jugadortx").textContent = jugadorNuevo
-            })
-            $("#jugadortx").animate({
-                left: "-=400vw"
-            })
-            $("#jugadortx").animate({
-                opacity:100,
-                left: "+=200vw",
-            })
+        
+        $("#jugadorActualtx").animate({
+            opacity: 0
+        },()=>{
+            document.getElementById("jugadorActualtx").textContent = jugadorNuevo
+            $("#jugadorActualtx").animate({
+                opacity: 100
+            },1000)
+        })
+        
+
+        $("#jugadorSiguientetx").animate({
+            opacity: 0
+        }).text(jugadorSiguiente).animate({
+            opacity: 100
+        })
+        
+
+
+            // $("#jugadortx").animate({
+            //     left: "+=200vw",
+            //     opacity: 0
+            // },()=>{
+            //     document.getElementById("jugadortx").textContent = jugadorNuevo
+            // })
+            // $("#jugadortx").animate({
+            //     left: "-=400vw"
+            // })
+            // $("#jugadortx").animate({
+            //     opacity:100,
+            //     left: "+=200vw",
+            // })
          
     }
 
@@ -710,6 +738,7 @@ if(e.target.className.includes("btn-av-disabled") == false){
     var last;
 
     var numJugador = 0;
+    var numSiguiente = numJugador + 1
 
     var FTCheck = true // Variable para comprobar que es la primera vez de la partida
     

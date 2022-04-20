@@ -213,3 +213,18 @@ header button{
     padding: 2%;
     cursor: pointer;
 }
+
+#help{
+    width: 80%;
+    color: white;
+
+    margin-top: 15%;
+}
+
+#help li{
+    margin-top: 10%;
+}
+
+#help dl{
+    margin-top: 3%;
+}

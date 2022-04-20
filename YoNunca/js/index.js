@@ -4,36 +4,79 @@ main = () => {
     cargar()
 }
 
-cargar = () =>{
-    document.getElementById("load").style.display = "none"
-    document.getElementById("load").remove()
-}
 
 activarEventos = () => {
-    document.getElementById("btn-play").addEventListener("click",jugar,false);
+    document.getElementById("btn-play").addEventListener("click",seleccionarModoJuego,false);
 }
 
-jugar = () => {
+jugar = (modo) => {
     jugadores = []
-    Swal.fire({
-        text: "Número de Jugadores:",
-        input: 'number',
-    })
-        .then((value) => {
-            let cant = parseInt(value.value)
-            if (cant != "" && cant != null && cant > 0 && cant <= 20) {
-                cantJugadores = cant
-                
-                introducirJugadores(1)
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Ingrese un número entre 1 y 20',
-                })
-            }
-        })
+    
+    switch (modo) {
+        
+        case 1: //Modo Normal
+            sessionStorage.setItem("modo", 1)
+            window.location.href = "./game.html"
+            break;
+
+        case 2: //Modo Focus
+            sessionStorage.setItem("modo", 2)
+            
+            Swal.fire({
+                text: "Número de Jugadores:",
+                input: "number",
+            }).then((value) => {
+                let cant = parseInt(value.value);
+                if (cant != "" && cant != null && cant > 0 && cant <= 20) {
+                    cantJugadores = cant;
+
+                    introducirJugadores(1);
+
+                }else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Ingrese un número entre 1 y 20",
+                    });
+                }
+            });
+            break;
+    }
+
+
+
 }
+
+    seleccionarModoJuego = () => {
+        Swal.fire({
+            title: 'Modo de Juego',
+            input: 'radio',
+            inputOptions: {
+                '1': 'Modo Normal',
+                '2': 'Modo Focus'
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Seleccione un modo de juego'
+                }
+            },
+            showCancelButton: true,
+            cancelButtonText:"Ayuda",
+            confirmButtonText: 'Seleccionar'
+            
+        }).then((x) => {
+            console.log(x)
+            if(x.isDismissed == true && x.dismiss == "cancel"){
+                window.location = "./help.html"
+            }else{
+                jugar(parseInt(x.value));
+            }
+
+            jugar(x.value)
+        })
+        
+    }
+    
 
     introducirJugadores = (x) => {
         Swal.fire({

@@ -8,21 +8,14 @@ main = () => {
 }
 
 activarEventos = () => {
-    document.getElementById("header-text").addEventListener("click", () => {
-        window.location = "./index.html";
-    },false);
-
-    $("#btn-next").click(() => {
+        $("#btn-next").click(() => {
         
         cambiarJugador();
         cambiarText();
     });
 }
 
-cargar = () =>{
-    document.getElementById("load").style.display = "none"
-    document.getElementById("load").remove()
-}
+
 
 asignarPregunta = () => {
     $("#text").text(frases[random(frases.length)]).animate({
@@ -32,14 +25,39 @@ asignarPregunta = () => {
 }
 
 asignarJugador = () => {
+
+    switch (modo) {
+        case 1:
+
+            document.getElementById("player").remove()
+            break;
+
+        case 2:
+
+            $("#player-text").text(jugadores[numJugador]).animate({
+                opacity: 1
+            },600)
+            break;
+    }
+
     $("#player-text").text(jugadores[numJugador]).animate({
         opacity: 1
     },600)
 }
 
 recogerDatos = () => {
+    
     jugadores = []
-    jugadores = shuffle(sessionStorage.getItem("jugadores").split(","))    
+    modo = parseInt(sessionStorage.getItem("modo"))
+
+    switch (modo){
+        
+        case 2:
+
+            jugadores = shuffle(sessionStorage.getItem("jugadores").split(","))    
+
+            break;
+    }
     
 
     
@@ -169,5 +187,7 @@ random = (max) => {
 var numJugador = 0;
 
 var last;
+
+var modo;
 
 window.addEventListener("load", main, false); // Evento de carga de la página

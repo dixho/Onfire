@@ -98,12 +98,11 @@ header{
 
 .jugador{
     position: absolute;
-    left: 0;
-    right: 0;
+
     text-align: center;
 }
 
-#jugadortx{
+#jugadorActualtx{
     margin: auto;
     margin-top: 10%;
     width: 40%;
@@ -116,6 +115,35 @@ header{
     font-weight: bold;
     padding: 2%;
     cursor: pointer;
+}
+
+#jugadorSiguientetx{
+    margin: auto;
+    margin-top: 10%;
+    width: 40%;
+    background-color: #493448;
+    ;
+    border-radius: 1em;
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    padding: 2%;
+    cursor: pointer;
+}
+
+#box{
+    display: flex !important;
+    width: 100%;
+}
+
+.box-text{
+    width: 50vw !important;
+    text-align: center;
+}
+
+.box-text:first-child{
+    margin-left: 5%;
 }
 
 /* Preguntas */
