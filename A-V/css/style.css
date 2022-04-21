@@ -189,11 +189,6 @@ header{
 
     width: 15vw;
     padding: 30%;
-/*     
-    margin-top: 1.5%;
-    margin-left: 5%;
-    top: 0;
-    left: 0; */
 
     cursor: no-drop;
 
@@ -211,11 +206,6 @@ header{
 
     width: 15vw;
     padding: 30%;
-/*     
-    margin-top: 1.5%;
-    margin-left: 5%;
-    top: 0;
-    left: 0; */
 
     cursor: pointer;
 
@@ -240,10 +230,12 @@ header{
 
 #TextPregunta{
     font-size: 1.5em;
+    color: white;
 }
 
 #TextCastigo{
     font-size: 1.5em;
+    color: white;
 }
 
 

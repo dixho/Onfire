@@ -12,5 +12,6 @@ activarEventsListenerGenerales = () =>{
     document.getElementById("btn-home").addEventListener("click", ()=>{window.location = "../index.html"}, false)
 }
 
+const body = document.body
 
 window.addEventListener("load",main,false)

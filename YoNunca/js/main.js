@@ -31,4 +31,6 @@ cargar = () =>{
     document.getElementById("load").remove()
 }
 
+const body = document.body
+
 window.addEventListener("load",main,false); // Evento de carga de la página 
