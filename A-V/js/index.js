@@ -1,6 +1,17 @@
 main = () => {
     activarEventsListener()
-    vaciarSessionStorage()
+
+    
+
+    // vaciarSessionStorage()
+}
+
+comprobarJugadores = () => {
+    if(sessionStorage.getItem('jugadores[]') == undefined || sessionStorage.getItem('jugadores[]') == "[]"){
+        return false
+    }else{
+        return true
+    }
 }
 
 vaciarSessionStorage = () => {
@@ -14,7 +25,36 @@ activarEventsListener = () => {
 
 jugar = () => {
     jugadores=[];
-    cantidadJugadores()
+    let hayJugadores = comprobarJugadores()
+    console.log(hayJugadores)
+    if(hayJugadores){
+        let jug = ""
+        for(let i=0;i<JSON.parse(sessionStorage.getItem('jugadores[]')).length;i++){
+            jug += JSON.parse(sessionStorage.getItem('jugadores[]'))[i].nombre + " "
+
+        }
+        console.log(jug)
+        Swal.fire({
+            title: "Jugadores guardados ¿Desea mantenerlos?",   
+            text: "Jugadores: \n" + jug,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.value) {
+                jugadores = JSON.parse(sessionStorage.getItem('jugadores[]'))
+                iniciarJuego()
+            } else {
+                vaciarSessionStorage()
+                cantidadJugadores()
+            }
+        })
+    }else{
+        cantidadJugadores()
+    }
 }
 
 cantidadJugadores = () => {
@@ -53,7 +93,7 @@ introducirJugadores = (x) => {
         showLoaderOnConfirm: true,
         preConfirm: (nombre) => {
             if (nombre != "" && nombre != null) {
-                if(jugadores.indexOf(nombre) == -1){
+                if(jugadores.indexOf(nombre) == -1){ //! No funciona bien el indexOf
                     jugadores.push({nombre: nombre, puntos: 0})
                     if (jugadores.length < cantJugadores) {
                         ++x
@@ -83,6 +123,9 @@ introducirJugadores = (x) => {
 }
 
 iniciarJuego = () => {
+    for(let f = 0; f < jugadores.length; f++){
+        jugadores[f].puntos = 0
+    }
     sessionStorage.setItem("jugadores[]", JSON.stringify(jugadores))
     window.location.href = "./game.html"
 }

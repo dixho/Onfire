@@ -9,8 +9,10 @@ main = () => {
 
 activarEventos = () => {
         $("#btn-next").click(() => {
-        
-        cambiarJugador();
+        if(comprobarModo()){
+            cambiarJugador();
+            
+        }
         cambiarText();
     });
 }
@@ -34,15 +36,13 @@ asignarJugador = () => {
 
         case 2:
 
-            $("#player-text").text(jugadores[numJugador]).animate({
+            $("#player-text").text(jugadores[numJugador].nombre).animate({
                 opacity: 1
             },600)
             break;
     }
 
-    $("#player-text").text(jugadores[numJugador]).animate({
-        opacity: 1
-    },600)
+   
 }
 
 recogerDatos = () => {
@@ -53,9 +53,8 @@ recogerDatos = () => {
     switch (modo){
         
         case 2:
-
-            jugadores = shuffle(sessionStorage.getItem("jugadores").split(","))    
-
+            jugadores = []
+            jugadores = shuffle(JSON.parse(sessionStorage.getItem("jugadores[]")))  
             break;
     }
     
@@ -120,10 +119,19 @@ cambiarJugador = () =>{
 
         numJugador++
     }
-    animacionCambiarJugador(jugadores[numJugador])
+    
+        animacionCambiarJugador(jugadores[numJugador].nombre)
+    
 
 }
 
+comprobarModo = () => {
+    if(modo == 2){
+        return true
+    }else{
+        return false
+    }
+}
 
 animacionCambiarJugador = (jugadorNuevo) => {
         
