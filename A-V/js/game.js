@@ -38,7 +38,7 @@ seleccionarRondas = () =>{
         }
     }).then((result) => {
         if (result.value) {
-            rondas = parseInt(result.value)*jugadores.length
+            rondas = (parseInt(result.value)*jugadores.length)-1
         }
     }
     )
@@ -241,23 +241,7 @@ cambiarJugador = () =>{
         }).text(jugadorSiguiente).animate({
             opacity: 100
         })
-        
-
-
-            // $("#jugadortx").animate({
-            //     left: "+=200vw",
-            //     opacity: 0
-            // },()=>{
-            //     document.getElementById("jugadortx").textContent = jugadorNuevo
-            // })
-            // $("#jugadortx").animate({
-            //     left: "-=400vw"
-            // })
-            // $("#jugadortx").animate({
-            //     opacity:100,
-            //     left: "+=200vw",
-            // })
-         
+             
     }
 
 
@@ -292,7 +276,7 @@ cambiarJugador = () =>{
                 if(document.getElementById("TextCastigo").textContent != ""){
                     $("#TextCastigo").hide("slow")
                 }
-                cambiarJugador()
+                if(FTCheck==false){cambiarJugador()}
                 if (document.getElementById("TextTipo").textContent != "Verdad") {
                     
                     document.getElementById("TextTipo").textContent = "Verdad"
@@ -306,7 +290,7 @@ cambiarJugador = () =>{
                 }
 
             }else if(rondaActual < rondas){
-                    rondaActual++
+                if(FTCheck == false) {rondaActual++}
                     for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
                         document.getElementsByClassName("btn-point")[i].disabled = false
                         document.getElementsByClassName("btn-point")[i].className = "btn-point"
@@ -316,7 +300,9 @@ cambiarJugador = () =>{
                     if(document.getElementById("TextCastigo").textContent != ""){
                         $("#TextCastigo").hide("slow")
                     }
-                    cambiarJugador()
+
+                    if(FTCheck==false){cambiarJugador()}
+
                     if (document.getElementById("TextTipo").textContent != "Verdad") {
                         
                         document.getElementById("TextTipo").textContent = "Verdad"
@@ -436,7 +422,7 @@ if(e.target.className.includes("btn-av-disabled") == false){
         
             $("#TextPregunta").hide("fast")
         
-            cambiarJugador()
+            if(FTCheck==false){cambiarJugador()}
         
             $("#TextCastigo").hide("fast")
         
@@ -476,7 +462,7 @@ if(e.target.className.includes("btn-av-disabled") == false){
         }
         else if(rondaActual < rondas){
 
-            rondaActual++
+            if(FTCheck == false) {rondaActual++}
             for(let i = 0; i < document.getElementsByClassName("btn-point").length; i++){
                 document.getElementsByClassName("btn-point")[i].disabled = false
             }
@@ -484,7 +470,7 @@ if(e.target.className.includes("btn-av-disabled") == false){
         
             $("#TextPregunta").hide("fast")
         
-        cambiarJugador()
+            if(FTCheck==false){cambiarJugador()}
         
             $("#TextCastigo").hide("fast")
         
