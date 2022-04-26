@@ -172,6 +172,30 @@ function activarEventsListener() {
 recogerDatos = () => {
     jugadores = []
     jugadores = shuffle(JSON.parse(sessionStorage.getItem("jugadores[]")))    
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = () => {    
+        
+        for(let i = 0; i < JSON.parse(xhttp.responseText).length; i++){
+            frasesVerdad.push(JSON.parse(xhttp.responseText)[i])
+        }
+
+    }
+    xhttp.open("GET", "./js/verdad.json", true);
+    xhttp.send();
+
+    const xhttp2 = new XMLHttpRequest();
+    xhttp2.onload = () => {
+        
+        for(let i = 0; i < JSON.parse(xhttp2.responseText).length; i++){
+            frasesReto.push(JSON.parse(xhttp2.responseText)[i])
+        }
+    }
+    xhttp2.open("GET", "./js/reto.json", true);
+    xhttp2.send();
+
+
+    return
     
 }
 
@@ -646,77 +670,9 @@ if(e.target.className.includes("btn-av-disabled") == false){
         }
 
 
-    var frasesVerdad = new Array(
-        "¿Te ha llegado a atraer alguien del grupo?",
-        "Si solo te pudieras llevar a un jugador a una isla desierta ¿A quién sería?",
-        "Algo vergonzoso que te haya pasado",
-        "¿A cuántas personas has besado en un mismo día?",
-        "¿Has mentido jugando a este juego?",
-        "¿Te liarias con alguien de aquí?",
-        "¿Has sido infiel o lo serías?",
-        "¿Harías un trío?",
-        "¿Has tenido sexo en un lugar público?",
-        "Lugar público más raro dnde has tenido sexo",
-        "¿Fantasía sexual?",
-        "¿Has mandado nudes?",
-        "¿Serías capaz de matar a alguien?",
-        "¿Te han pillado alguna vez tocandote?",
-        "¿Te ha gustado alguna vez el padre/madre de algún amigo?",
-        "¿Te ha gustado alguna vez algun profesor?",
-        "¿Persona más mayor con la que has tenido algo?",
-        "¿Persona más pequeña con la que has tenido algo?",
-        "¿Con que famosa lo harías?",
-        "¿Con que famoso de tu mismo sexo lo harías?",
-        "¿Alguna vez te han pillado teniendo sexo?",
-        "¿De qué parte del cuerpo estás más orgulloso/a?",
-    );
+    var frasesVerdad = new Array();
 
-    var frasesReto = new Array(
-        {
-            frase: "Haz Twerkin",
-            castigo: 5
-        },
-        {
-            frase: "Haz un calvo",
-            castigo: 10
-        },
-        {
-            frase: "Termina tu copa",
-            castigo: 15
-        },
-        {
-            frase: "3 chupitos",
-            castigo: 5
-        },
-        {
-            frase: "Liate un piti en 45 segundos",
-            castigo: 20
-        },
-        {
-            frase: "Dale tu copa al jugador que peor te caiga",
-            castigo: 30
-        },
-        {
-            frase: "Cada vez que digas sí o no bebes (Durante ~ minutos)",
-            castigo: 20
-        },
-        {
-            frase: "Imita a |",
-            castigo: 10
-        },
-        {
-            frase: "Dale un beso en la mejilla a |",
-            castigo: 30
-        },
-        {
-            frase: "| tiene que meterte un hielo en la camiseta",
-            castigo: 30
-        },
-        {
-            frase: "Dale tu copa a |",
-            castigo: 40
-        },
-    );
+    var frasesReto = new Array();
     
         
     var jugadores = new Array()

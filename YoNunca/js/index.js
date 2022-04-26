@@ -32,14 +32,14 @@ jugar = (modo) => {
             sessionStorage.setItem("modo", 2)
             
             let hayJugadores = comprobarJugadores()
-            console.log(hayJugadores)
+            
             if(hayJugadores){
                 let jug = ""
                 for(let i=0;i<JSON.parse(sessionStorage.getItem('jugadores[]')).length;i++){
                     jug += JSON.parse(sessionStorage.getItem('jugadores[]'))[i].nombre + " "
         
                 }
-                console.log(jug)
+                
                 Swal.fire({
                     title: "Jugadores guardados ¿Desea mantenerlos?",   
                     text: "Jugadores: \n" + jug,
@@ -115,7 +115,7 @@ jugar = (modo) => {
             confirmButtonText: 'Seleccionar'
             
         }).then((x) => {
-            console.log(x)
+            
             if(x.isDismissed == true && x.dismiss == "cancel"){
                 window.location = "./help.html"
             }else{
@@ -150,8 +150,8 @@ jugar = (modo) => {
 
                 function anadirJugador() {
                     if (nombre != "" && nombre != null) {
-                        if (jugadores.indexOf(nombre) == -1) {
-                            console.log("aaa")
+                        if (comprobarJugadorAnadido(nombre) == false) {
+                            
                             jugadores.push({nombre: nombre, puntos: 0})
                             if (jugadores.length < cantJugadores) {
                                 ++x;
@@ -165,7 +165,9 @@ jugar = (modo) => {
                                 icon: 'error',
                                 title: 'Oops...',
                                 text: 'Jugador ya añadido',
-                            });
+                            }).then(() => {
+                                introducirJugadores(x)
+                            })
 
 
                         }
@@ -181,9 +183,22 @@ jugar = (modo) => {
         })
     }
 
+    comprobarJugadorAnadido = (jugador) => {
+        let final = false
+        for(let f = 0; f < jugadores.length; f++){
+            if(jugadores[f].nombre == jugador){
+                f = jugadores.length
+                final = true
+            }else{
+                final = false
+            }
+        }
+        return final
+    }
+
     iniciarJuego = () => {
         sessionStorage.setItem("jugadores[]", JSON.stringify(jugadores))
-        console.log(sessionStorage)
+        
         window.location.href = "./game.html"
     }
 

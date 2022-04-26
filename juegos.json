@@ -1,0 +1,19 @@
+[
+    {
+        "nombre": "Atrevimiento o Verdad",
+        "acronimo": "A-V",
+        "btn-play-text": "Jugar"
+        
+    },
+    {
+        "nombre": "Yo Nunca",
+        "acronimo": "YoNunca",
+        "btn-play-text": "Jugar"
+    },
+    {
+        "unavaliable": true,
+        "nombre": "Test de Juego",
+        "acronimo": "TJ",
+        "btn-play-text": "Jugar Test"
+    }
+]

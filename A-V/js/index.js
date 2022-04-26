@@ -1,10 +1,11 @@
 main = () => {
     activarEventsListener()
 
-    
+
 
     // vaciarSessionStorage()
 }
+
 
 comprobarJugadores = () => {
     if(sessionStorage.getItem('jugadores[]') == undefined || sessionStorage.getItem('jugadores[]') == "[]"){
@@ -26,14 +27,14 @@ activarEventsListener = () => {
 jugar = () => {
     jugadores=[];
     let hayJugadores = comprobarJugadores()
-    console.log(hayJugadores)
+    
     if(hayJugadores){
         let jug = ""
         for(let i=0;i<JSON.parse(sessionStorage.getItem('jugadores[]')).length;i++){
             jug += JSON.parse(sessionStorage.getItem('jugadores[]'))[i].nombre + " "
 
         }
-        console.log(jug)
+        
         Swal.fire({
             title: "Jugadores guardados ¿Desea mantenerlos?",   
             text: "Jugadores: \n" + jug,
@@ -93,7 +94,7 @@ introducirJugadores = (x) => {
         showLoaderOnConfirm: true,
         preConfirm: (nombre) => {
             if (nombre != "" && nombre != null) {
-                if(jugadores.indexOf(nombre) == -1){ //! No funciona bien el indexOf
+                if(comprobarJugadorAnadido(nombre) == false){ //! No funciona bien el indexOf
                     jugadores.push({nombre: nombre, puntos: 0})
                     if (jugadores.length < cantJugadores) {
                         ++x
@@ -107,20 +108,36 @@ introducirJugadores = (x) => {
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Jugador ya añadido',
+                    }).then(() => {
+                        introducirJugadores(x)
                     })
-                    
-                    
+                                        
                 }
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Ingrese un nombre',
+                    showConfirmButton: true,
+                    showCancelButton: false
                 })
             }
         }
     })
 }
+
+    comprobarJugadorAnadido = (jugador) => {
+        let final = false
+        for(let f = 0; f < jugadores.length; f++){
+            if(jugadores[f].nombre == jugador){
+                f = jugadores.length
+                final = true
+            }else{
+                final = false
+            }
+        }
+        return final
+    }
 
 iniciarJuego = () => {
     for(let f = 0; f < jugadores.length; f++){
