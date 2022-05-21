@@ -31,7 +31,7 @@ recogerDatos = () => {
 
         
     }
-    xhttp.open("GET", "./juegos.json", true);
+    xhttp.open("GET", "../json/juegos.json", true);
     xhttp.send();
 
 
