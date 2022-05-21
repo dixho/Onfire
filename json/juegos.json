@@ -15,5 +15,10 @@
         "nombre": "Test de Juego",
         "acronimo": "TJ",
         "btn-play-text": "Jugar Test"
+    },
+    {
+        "nombre": "Hijo de Puta",
+        "acronimo": "HDP",
+        "btn-play-text": "Jugar"
     }
 ]
