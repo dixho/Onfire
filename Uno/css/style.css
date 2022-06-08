@@ -1,0 +1,91 @@
+
+
+body{
+    background-color: #181a1b;
+    color: white;
+}
+
+.green{
+    background-color: green;
+    color: white;
+    border: 4px solid green;
+}
+
+.blue{
+    background-color: blue;
+    color: white;
+    border: 4px solid rgb(0, 0, 255);
+}
+
+.red{
+    background-color: red;
+    color: white;
+    border: 4px solid red;
+}
+
+.yellow{
+    background-color: yellow;
+    color: black;
+    border: 4px solid yellow;
+}
+
+.black{
+    color: white;
+    background-color: black;
+    border: 4px solid black;
+}
+
+.correct{
+    border: 4px solid white;
+}
+
+#principalCard{
+    margin-top: 5%;
+}
+
+#table{
+
+    display: flex;
+    flex-direction: row;
+
+    width: 100vw;
+}
+
+#table div{
+    margin: 5%;
+    margin-top: 1%;
+}
+
+#playerTable{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+
+    text-align: center;
+}
+
+#principalCardDiv{
+    
+    margin-top: 0;
+    padding-top: 0;
+    padding: 5%;
+    padding-left: 3%;
+
+}
+
+.card{
+    text-align: center;
+    width: 5em;
+    height: 6em;
+}
+
+#changeColorAlert{
+    display: flex !important;
+
+}
+
+#changeColorAlert table{
+    margin: auto !important;
+    width: 20em;
+    height: 20em;
+}
