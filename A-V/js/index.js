@@ -26,9 +26,8 @@ activarEventsListener = () => {
 
 jugar = () => {
     jugadores=[];
-    let hayJugadores = comprobarJugadores()
     
-    if(hayJugadores){
+    if(comprobarJugadores()){
         let jug = ""
         for(let i=0;i<JSON.parse(sessionStorage.getItem('jugadores[]')).length;i++){
             jug += JSON.parse(sessionStorage.getItem('jugadores[]'))[i].nombre + " "

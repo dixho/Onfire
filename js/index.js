@@ -1,87 +1,101 @@
-main = () => {
-    setTimeout(() => {
-        recogerDatos();
-    }, 100);
-    setTimeout(() => {
-        crearCards();
-    }, 200);
-    mostrarVersion();
-
+const main = () =>{
+    checkSessionStorage()
+    eventListener()
 }
 
-mostrarVersion = () => {
-
-    let versionP = document.createElement("p")
-    versionP.id = "version";
-    versionP.textContent = version;
-    body.appendChild(versionP);
-
-}
-
-recogerDatos = () => {
+checkSessionStorage = () =>{
     
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = () => {    
-        
-        for(let i = 0; i < JSON.parse(xhttp.responseText).length; i++){
-            if(JSON.parse(xhttp.responseText)[i].unavaliable == undefined ){ //! if para comprobar que el juego de test no aparezca
-                juegos.push(JSON.parse(xhttp.responseText)[i]);
-            }
+    if(sessionStorage.getItem("jugadores[]") != undefined){
+        jugadores = JSON.parse(sessionStorage.getItem("jugadores[]"))
+        jugadores.forEach(element =>{
+            createPlayerDiv(element.nombre)
+        })
+        if(jugadores.length >= minPlayers){
+            document.getElementById("btn-next").disabled = false
         }
 
-        
     }
-    xhttp.open("GET", "../json/juegos.json", true);
-    xhttp.send();
-
-
-    return
-
+    if(jugadores.length > 0){
+        document.getElementById("playersDisplay-title").textContent = "Jugadores "+jugadores.length+"/"+maxPlayers
+    }
 }
 
+const eventListener = () =>{
 
-crearCards = () => {
-    
-    
-    if(juegos.length > 0){
-        for(let i = 0; i < juegos.length; i++){
-            let card = document.createElement('div');
-            card.classList.add("card","border-0","bg-transparent");
-            card.setAttribute('id', juegos[i].acronimo);
-            card.setAttribute("style", "width: "+100/juegos.length+"%;");
-
-            let cardBody = document.createElement('div');
-            cardBody.classList.add('card-body','rounded-3',);
-
-            let cardTitle = document.createElement('h5');
-            cardTitle.classList.add("card-title","text-white");
-            cardTitle.textContent = juegos[i].nombre;
-
-            let cardBtn = document.createElement('a');
-            cardBtn.classList.add('btn', 'btn-primary', 'btn-card');
-            cardBtn.setAttribute('href', "./"+juegos[i].acronimo+"/index.html");
-            cardBtn.textContent = "Jugar";
-
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardBtn);
-            card.appendChild(cardBody);
-            document.getElementById('cards').appendChild(card);
+    document.getElementById("playersInput-add").addEventListener("click", addPlayer);
+    document.getElementById("playersInput-input").addEventListener("keyup", (e) =>{
+        if(e.keyCode == 13){
+            addPlayer();
+            document.getElementsByName("playerName")[0].value = ""
             
         }
-        
-    }else{
-        location.reload();
-    }
+    })
+    document.getElementById("btn-next").addEventListener("click",next = () =>{
+        sessionStorage.setItem("jugadores[]", JSON.stringify(jugadores))
+        window.location.href = "./selectGame.html"
+    })
+
 
 }
 
+const addPlayer = () =>{
 
+    
+        if(document.getElementsByName("playerName")[0].value != "" && jugadores.length < maxPlayers ){
+            let playerName = document.getElementsByName("playerName")[0].value;
+            createPlayerDiv(playerName)
+            jugadores.push({nombre: playerName,puntos:0})
+            document.getElementById("playersDisplay-title").textContent = "Jugadores "+jugadores.length+"/"+maxPlayers
+            document.getElementsByName("playerName")[0].value = ""
+            document.getElementsByName("playerName")[0].focus()
+        }else if(jugadores.length >= maxPlayers){
+            document.getElementById("playersInput-add").disabled = true
+        }
+        if(jugadores.length >= minPlayers){
+            document.getElementById("btn-next").disabled = false
+        }
+    
 
+}
 
-var juegos = new Array();
+comprobarJugadores = () => {
+    if(sessionStorage.getItem('jugadores[]') == undefined || sessionStorage.getItem('jugadores[]') == "[]"){
+        return false
+    }else{
+        return true
+    }
+}
 
-const body = document.body
+const createPlayerDiv = (playerName) =>{
+    let playerDiv = document.createElement("div")
+    playerDiv.className = "playerName"
+    playerDiv.innerHTML = playerName
+    playerDiv.addEventListener("click", (e) =>{
+        e.target.remove()
+        
+        jugadores.forEach((element,index) =>{
+            if(element.nombre == e.target.textContent){
+                jugadores.splice(index,1)
+            }
+            if(jugadores.length < minPlayers){
+                document.getElementById("btn-next").disabled = true
+            }
+            if(jugadores.length < maxPlayers){
+                document.getElementById("playersInput-add").disabled = false
+            }
+        })
+    console.log(jugadores.length)
+    document.getElementById("playersDisplay-title").textContent = "Jugadores "+jugadores.length+"/"+maxPlayers
+    })
 
-const version = "V 1.1"
+    document.getElementById("playersDisplay-list").appendChild(playerDiv)
 
-window.addEventListener("load",main)
+}
+
+const minPlayers = 2
+
+const maxPlayers = 10
+
+var jugadores = new Array()
+
+window.addEventListener('load', main);
