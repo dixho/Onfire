@@ -1,0 +1,93 @@
+#playersInput-div {
+  text-align: center;
+  margin-top: 1em;
+  color: white;
+}
+
+#playersInput-add {	
+  width: 10% !important;
+}
+
+#playersDisplay-div {
+    text-align: center;
+
+    
+    width: 80%;
+    height: auto;
+
+    position: absolute;
+    
+    left: 10%;
+    right: 10%;
+
+    margin-top: 2em;
+    padding-top: 1em;
+    background-color: whitesmoke;
+
+    border-radius: 1em;
+}
+
+#playersDisplay-title{
+    
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+
+}
+
+#playerDisplay-list{
+    display: flex;
+    align-content: center;
+}
+
+.playerName{
+
+    margin: auto;
+
+    text-align: center;
+
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+
+    background-color: antiquewhite;
+    border-radius: 1em;
+    width: 80%;
+
+
+
+}
+.playerName:last-child{
+    margin-bottom: 1.5em;
+    
+}
+
+#removePlayer-text{
+    position: absolute;
+
+    bottom: 5%;
+
+
+    width: 100%;
+
+    color: white;
+    text-align: center;
+}
+
+#separateTitle-List{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#btn-next-div{
+    position: absolute ;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: max-content;
+}
+
+#btn-next{
+    margin: auto;
+
+
+}
