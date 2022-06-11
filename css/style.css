@@ -241,8 +241,8 @@ body{
   }
 
   #suge{
-    position: absolute;
+    position: absolute !important;
 
-    bottom: 0;
-    margin-left:4% ;
+    bottom: 0 !important;
+    margin-left:4% !important;
   }
