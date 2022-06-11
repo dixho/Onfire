@@ -1,0 +1,39 @@
+body{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+#game{
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+
+
+
+}
+
+#table{
+    position: absolute;
+    background-color: brown;
+
+    border-radius: 12em;
+
+    border: 1em solid black;
+}
+
+#hand{
+    
+    position: absolute;
+    background-color: blue;
+    content: " ";
+
+    display: flex;
+}
+
+.card{
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin:3%;
+}

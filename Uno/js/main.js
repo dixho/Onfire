@@ -7,7 +7,7 @@ main = () =>{
         showActualPlayer();
         checkHand();
         activateEventListener();
-    },300)
+    },500)
     // showActualPlayer();
     // checkHand()
 }
@@ -16,12 +16,12 @@ pickUpCards = () =>{
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
     
-        console.log(JSON.parse(xhttp.responseText).length)
+        console.log(xhttp.responseText)
         for(let f = 0; f < JSON.parse(xhttp.responseText).length; f++){
             totalCards.push(JSON.parse(xhttp.responseText)[f]);
         }
     }
-    xhttp.open("GET", "../cards.json", true);
+    xhttp.open("GET", "./cards.json", true);
     xhttp.send();
 
 }
@@ -192,6 +192,7 @@ selectCard = (e) =>{
         console.warn(card)
         console.warn(principalCard)
     }
+
 }
 
 changeOrder = () =>{
@@ -316,7 +317,7 @@ generatePlayers = () =>{
 
 }
 
-generateHand = () =>{
+const generateHand = () =>{
 
     var hand = new Array()
     for(var i=0;i<maxCards;i++){
@@ -327,7 +328,7 @@ generateHand = () =>{
     return hand
 }
 
-generateCard = () =>{
+const generateCard = () =>{
 
     let tempCard = totalCards[Math.floor(Math.random()*totalCards.length)];
 

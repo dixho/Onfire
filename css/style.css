@@ -54,11 +54,23 @@ body{
     cursor: default;
 }
 
+#cards{
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  
+
+}
 
 .card{
     margin: auto;
     margin-top: 15%;
+    margin-left: 5%;
+    margin-right: 5%;
     text-align: center;
+    width: fit-content;
 }
 
 .card-body{

@@ -20,5 +20,10 @@
         "nombre": "Hijo de Puta",
         "acronimo": "HDP",
         "btn-play-text": "Jugar"
+    },
+    {
+        "nombre": "Uno",
+        "acronimo": "Uno",
+        "btn-play-text": "Jugar"
     }
 ]
