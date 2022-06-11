@@ -78,6 +78,29 @@ body{
     
 }
 
+.card-tag{
+    background-color: #660297d5;
+    color: white;
+    
+}
+
+.card-tag::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(214, 8, 35, 0.712);
+    margin-top: 1%;
+}
+
+.card-tag::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(214, 8, 35, 0.712);
+    margin-top: 1%;
+}
 
 .btn-card{
     background-color: #3f218191 !important;

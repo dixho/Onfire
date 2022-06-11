@@ -2,8 +2,7 @@
     {
         "nombre": "Atrevimiento o Verdad",
         "acronimo": "A-V",
-        "btn-play-text": "Jugar"
-        
+        "btn-play-text": "Jugar"        
     },
     {
         "nombre": "Yo Nunca",
@@ -19,11 +18,15 @@
     {
         "nombre": "Hijo de Puta",
         "acronimo": "HDP",
-        "btn-play-text": "Jugar"
+        "btn-play-text": "Jugar",
+        "tag":"W.I.P",
+        "unavaliable": true
     },
     {
         "nombre": "Uno",
         "acronimo": "Uno",
-        "btn-play-text": "Jugar"
+        "btn-play-text": "Jugar",
+        "tag": "W.I.P",
+        "unavaliable": true
     }
 ]

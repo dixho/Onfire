@@ -46,7 +46,7 @@ header{
 }
 
 #cabezatx{
-    cursor: pointer;
+    /* cursor: pointer; */
     /* clear: left; */
     margin: auto;
 }
@@ -114,7 +114,7 @@ header{
     font-size: larger;
     font-weight: bold;
     padding: 2%;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 #jugadorSiguientetx{
@@ -129,7 +129,7 @@ header{
     font-size: larger;
     font-weight: bold;
     padding: 2%;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 #box{

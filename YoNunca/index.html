@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #header-text{
+            cursor: pointer;
+        }
+    </style>
     <title>~ Yo Nunca ~</title>
-    
 </head>
 
 <body class="user-select-none">
@@ -24,26 +28,23 @@
             <div id="header">
                 <header class="rounded">
                     <button class="rounded" id="btn-home">Home</button>
-                    <p>Yo Nunca</p>
+                    <p id="header-text">Yo Nunca</p>
                 </header>
             </div>
-            <div id="button">
-                <button id="btn-play">Jugar</button>
+            <div id="player">
+                <p id="player-text" style="opacity: 0;">Jugador</p>
             </div>
+            <div id="text-screen" class="mx-auto">
+                <div id="text-div">
+                    <p id="text" style="opacity: 0;">Yo nunca he bebido alcohol</p>
+                </div>
+            </div>
+            <div id="button-next">
+                <button class="btn btn-primary" id="btn-next">Siguiente</button>
         </div>
     </div>
-
 </body>
-<script src="./js/main.js"></script>
-<script src="./js/index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </html>
-
-<!-- Atribuciones -->
-
-<!-- Photo by <a href="https://unsplash.com/@kaedu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kajetan Sumila</a> on <a href="https://unsplash.com/s/photos/party-people?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> -->
-  
-
-<!-- Photo by <a href="https://unsplash.com/@antoinejulien?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Antoine J.</a> on <a href="https://unsplash.com/s/photos/party?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> -->
-  

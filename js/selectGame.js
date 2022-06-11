@@ -23,6 +23,7 @@ recogerDatos = () => {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = () => {    
         
+        // console.log(JSON.parse(xhttp.responseText)[i]);
         for(let i = 0; i < JSON.parse(xhttp.responseText).length; i++){
             if(JSON.parse(xhttp.responseText)[i].unavaliable == undefined ){ //! if para comprobar que el juego de test no aparezca
                 juegos.push(JSON.parse(xhttp.responseText)[i]);
@@ -31,7 +32,7 @@ recogerDatos = () => {
 
         
     }
-    xhttp.open("GET", "../json/juegos.json", true);
+    xhttp.open("GET", ("../json/juegos.json"), true);
     xhttp.send();
 
 
@@ -57,6 +58,14 @@ crearCards = () => {
             cardTitle.classList.add("card-title","text-white");
             cardTitle.textContent = juegos[i].nombre;
 
+
+            if(juegos[i].tag != undefined){
+                let cardTag = document.createElement('p');
+                cardTag.classList.add("card-text","text-white","card-tag");
+                cardTag.textContent = juegos[i].tag;
+                cardBody.appendChild(cardTag);
+            }
+            
             let cardBtn = document.createElement('a');
             cardBtn.classList.add('btn', 'btn-primary', 'btn-card');
             cardBtn.setAttribute('href', "./"+juegos[i].acronimo+"/index.html");
@@ -70,12 +79,11 @@ crearCards = () => {
         }
         
     }else{
-        // location.reload();
+        console.log("No hay juegos");
+        location.href = "../index.html"
     }
 
 }
-
-
 
 
 var juegos = new Array();
