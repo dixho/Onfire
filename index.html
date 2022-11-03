@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/general.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    
     <title>Onfire</title>
 </head>
 <body>
-    
+    <header>
+        <p id="title">Onfire</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Acerca de</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+    </header>
 </body>
 <script>
     if( navigator.userAgent.match(/Android/i)
@@ -19,8 +30,6 @@
 || navigator.userAgent.match(/Windows Phone/i))
 {
     window.location = "/movil/index.html";
-}else{
-    console.log("No es un dispositivo movil");	
 }
 </script>
 </html>
