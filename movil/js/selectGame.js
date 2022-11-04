@@ -32,7 +32,7 @@ recogerDatos = () => {
 
         
     }
-    xhttp.open("GET", ("../json/juegos.json"), true);
+    xhttp.open("GET", ("../assets/json/juegos.json"), true);
     xhttp.send();
 
 
@@ -80,7 +80,7 @@ crearCards = () => {
         
     }else{
         console.log("No hay juegos");
-        location.href = "../index.html"
+        location.href = "./index.html"
     }
 
 }

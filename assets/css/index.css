@@ -1,0 +1,111 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#titleDiv-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+
+    font-size: 5.3em;
+
+    font-weight: bolder;
+
+    font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+
+    margin-top: 2%;
+
+
+}
+
+#descriptionDiv{
+    margin-top: 3%;
+
+    
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#descriptionDiv > p{
+    text-align: center;
+    font-size: 1em;
+    font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+   
+}
+
+#descriptionDiv > p:nth-child(1){
+    font-weight: bolder;
+}
+
+#descriptionDiv > p:nth-child(2){
+    margin-top: 3%;
+}
+
+#selectGamesDiv{
+    margin-top: 3%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#selectGames-title{
+    width: max-content;
+    font-size: 1.5em;
+    font-weight: bolder;
+    font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#selectGames-cards{
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gameCard{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 5%;
+    padding: 1%;
+    background-color: rgb(180, 180, 180);
+}
+
+.gameCard > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.gameCard > p{
+    text-align: justify !important;
+}
+
+.gameCard:hover{
+    cursor: pointer;
+    
+    transform: scale(1.1);
+    transition: 0.5s;
+
+}

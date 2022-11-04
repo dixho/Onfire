@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Atrevimiento o Verdad",
+        "name": "A - V",
+        "img": "./assets/img/unoLogo.png"   
+    },
+    {
+        "title": "Uno",
+        "name": "Uno",
+        "img": "./assets/img/unoLogo.png"
+    },
+    {
+        "unavaliable": true,
+        "nombre": "Test de Juego",
+        "acronimo": "TJ",
+        "btn-play-text": "Jugar Test"
+    },
+    {
+        "title": "Yo Nunca",
+        "name": "Yo Nunca",
+        "img": "./assets/img/unoLogo.png"
+    },
+    {
+        "nombre": "Uno",
+        "acronimo": "Uno",
+        "btn-play-text": "Jugar",
+        "tag": "W.I.P",
+        "unavaliable": true
+    }
+]
