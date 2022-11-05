@@ -46,6 +46,8 @@ body{
 
 #descriptionDiv > p:nth-child(1){
     font-weight: bolder;
+    margin-top: 2%;
+    font-size: 1.1em;
 }
 
 #descriptionDiv > p:nth-child(2){
