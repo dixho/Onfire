@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
         || navigator.userAgent.match(/iPod/i)
         || navigator.userAgent.match(/BlackBerry/i)
         || navigator.userAgent.match(/Windows Phone/i)) {
-        window.location = "./movil/index.html";
+        window.location = "./m/index.html";
     } else {
         createHeader();
     }
@@ -30,8 +30,8 @@ const createHeader = () => {
     a1.textContent = 'Inicio';
     const li2 = document.createElement('li');
     const a2 = document.createElement('a');
-    a2.setAttribute('href', './about.html');
-    a2.textContent = 'Acerca de';
+    a2.setAttribute('href', './players.html');
+    a2.textContent = 'Jugadores';
 
 
     li1.appendChild(a1);
