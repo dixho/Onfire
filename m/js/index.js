@@ -71,7 +71,7 @@ const addPlayer = () =>{
 
 
 
-checkName = () =>{
+const checkName = () =>{
     let name = document.getElementsByName("playerName")[0].value
     let bool = true
     for(let i = 0; i < jugadores.length; i++){
@@ -133,6 +133,6 @@ const minPlayers = 2
 
 const maxPlayers = 10
 
-var jugadores = new Array()
+var jugadores = []
 
 window.addEventListener('load', main);

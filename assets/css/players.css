@@ -1,0 +1,122 @@
+#playersDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#playersDivInput{
+    
+
+    margin: auto;
+    margin-top: 3%;
+
+    width: 100%;
+/* Center a input and a button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#playersInput{
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    width: 20%;
+    height: 2.25em;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+
+    background-color: rgba(215, 215, 215, 0.537);
+}
+
+#playersInput:focus{
+    outline: none;
+
+    background-color: rgba(255, 255, 255, 0.8);
+
+    transition: all 0.2s ease-in-out;
+}
+
+#playersInputBtn{
+    margin: auto;
+    margin-right: 0;
+    margin-left: 0;
+
+    width: 2.25em;
+    height: 2.25em;
+    
+
+    border: 1px solid black;
+    border-radius: 15%;
+    text-align: center;
+
+    background-color: rgba(215, 215, 215, 0.537);
+
+    cursor: pointer;
+
+}
+
+#playersInputBtn:hover{
+
+    transform: scale(1.2);
+    
+    background-color: rgba(124, 213, 116, 0.786);
+    border-radius: 50%;
+
+   
+
+    transition: all 0.2s ease-in-out;
+}
+
+#playersInputBtn:active{
+    transform: scale(1);
+    background-color: rgba(75, 141, 70, 0.562);
+    
+    transition: all 0.2s ease-in-out;
+}
+
+#playersDivList{
+    margin: auto;
+    margin-top: 5%;
+}
+
+#playersDivList > ul > li{
+    list-style: none;
+
+    text-align: center;
+
+    margin: 1em;
+
+    padding: 1em;
+
+    border: 0.15em solid rgb(0, 0, 0);
+    border-radius: 5px;
+
+    background-color: rgba(186, 186, 186, 0.537);
+
+    width: 10em;
+    cursor: pointer;
+}
+
+#playersDivList > ul > li:hover{
+    
+    transform: scale(1.1);
+
+    background-color: rgba(198, 43, 43, 0.8);
+    border: 0.15em solid rgba(0, 0, 0, 0.419);
+    
+    transition: 0.5s;
+
+}
+
+
+
+#title{
+    margin: auto;
+    margin-top: 3%;
+    text-align: center;
+
+    font-size: 2em;
+}

@@ -79,6 +79,55 @@ a, a:visited, a:link, a:active{
     color: black;
 }
 
+#playersBtn{
+    cursor: pointer;
+}
+
+.alert{
+    
+    display: none;
+
+    background-color: rgba(0, 0, 0, 0.456);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+#alertContent p{
+   
+
+
+    text-align: center;
+
+    margin: auto;
+    margin-top: 20%;
+
+    width: 20%;
+    height: fit-content;
+
+    border: 0.15em solid rgba(255, 0, 0, 0.823);
+    border-radius: 5px;
+
+    background-color: rgb(233, 233, 233);
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.visible{
+
+    transition: all 1s ease-in-out;; 
+
+    display: block;
+}
 
 .debug{
         border: 1px solid blue;
